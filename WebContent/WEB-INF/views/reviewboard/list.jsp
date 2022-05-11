@@ -125,7 +125,7 @@ list = (ArrayList<BoardDTO>) request.getAttribute("boardList");
                                   <img src="${pageContext.request.contextPath }/inc/img/blog/main-blog/m-blog-1.jpg" alt="">
                                   <div class="blog_details">
                                       <a href="single-blog.html">
-                                          <h2><a href="detail.board?num=${board.boardNum }">${board.boardTitle }</h2>
+                                          <h2><a href="detail.board?num=${board.boardNum }">${board.boardTitle }</a></h2>
                                       </a>
                                       <p>MCSE boot camps have its supporters and its detractors. Some people do not understand
                                           why you should have to spend money on boot camp when you can get the MCSE study

@@ -24,8 +24,9 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/inc/vendors/owl-carousel/owl.carousel.min.css">
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/inc/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/inc/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/subscribe.css">
+
 </head>
 <body>
 	<!--================ Start Header Menu Area =================-->
@@ -69,7 +70,7 @@
 									<li class="nav-item"><a class="nav-link"
 										href="<%=request.getContextPath()%>/reviewboard/list.board">리뷰게시판</a></li>
 									<li class="nav-item"><a class="nav-link"
-										href="<%=request.getContextPath()%>/feedbackboard/feedbackList.board">문의게시판</a></li>
+										href="<%=request.getContextPath()%>/feedbackboard/list.board">문의게시판</a></li>
 								</ul>
 							</li>
 							<li class="nav-item submenu dropdown"><a href="#"

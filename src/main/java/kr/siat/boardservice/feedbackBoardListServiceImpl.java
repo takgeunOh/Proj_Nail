@@ -30,6 +30,7 @@ public class feedbackBoardListServiceImpl implements Service{
 		if("GET".equals(req.getMethod())) {
 			System.out.println("boardListServiceImpl GET 방식 진입 ");
 			doGet(req, resp);
+			// return new ModelAndView("/feedbackboard/list", false);
 			return new ModelAndView("/feedbackboard/list", false);
 		}
 		else

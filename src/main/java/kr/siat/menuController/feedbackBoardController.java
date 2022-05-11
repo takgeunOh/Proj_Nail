@@ -17,9 +17,9 @@ public class feedbackBoardController implements Controller{
 	@Override
 	public ModelAndView request(HttpServletRequest req, HttpServletResponse resp) {
 		
-		if(req.getAttribute("service").equals("/feedbackList"))
+		if(req.getAttribute("service").equals("/list"))
 			return new feedbackBoardListServiceImpl().request(req, resp);
-		else if (req.getAttribute("service").equals("/feedbackDetail"))
+		else if (req.getAttribute("service").equals("/detail"))
 			return new feedbackBoardDetailServiceImpl().request(req, resp);
 		/*
 		 * else if(req.getAttribute("service").equals("/insert")) return new
