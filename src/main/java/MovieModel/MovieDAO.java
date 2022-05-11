@@ -11,15 +11,13 @@ import kr.siat.model.BoardDTO;
 
 public class MovieDAO {
 
-	
-	
-	
-	
 	private Connection conn;
 	private Statement stmt;
 	private PreparedStatement ptmt;
 	private ResultSet rs;
 		
+	
+	
 	
 	public ArrayList<MovieDTO> List() {
 		ArrayList<MovieDTO> list = new ArrayList<MovieDTO>();
@@ -28,6 +26,12 @@ public class MovieDAO {
 		
 		
 		
+		return null;
+	}
+
+
+	public MovieDTO selectbyMovieNum(String num) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

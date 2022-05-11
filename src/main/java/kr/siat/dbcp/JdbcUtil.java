@@ -6,17 +6,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 public class JdbcUtil {
 	static String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	static String user = "TAKGEUN";
-	static String password = "TAKGEUN";
+	static String user = "comstudy22";
+	static String password = "comstudy22";
 	public static Connection getConnection() {
 		Connection conn = null;
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
+			System.out.println(conn);
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 검색 실패");
 			e.printStackTrace();
@@ -83,5 +83,9 @@ public class JdbcUtil {
 		close(rs);
 		close(ptmt);
 		close(conn);
+	}
+	
+	public static void main(String[] args) {
+		getConnection();
 	}
 }
