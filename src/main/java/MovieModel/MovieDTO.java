@@ -37,7 +37,14 @@ public class MovieDTO {
 		this.movieHide = movieHide;
 	}
 	*/
+	
+	
+	public MovieDTO() {
+		this(0, "", "", "", "", 0, 0,"","", 0, 0, 0);
+	}
+	
 
+	
 
 	public MovieDTO(int movieNum, String movieGenre, String movieTitle, String movieContent, String movieDirector,
 			int movieYear, int moviePrice, String movieCountry, String movieCompany, int movieLikeCnt, int movieHide,

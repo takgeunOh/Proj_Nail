@@ -16,7 +16,7 @@ public class movieDetailServiceImpl implements Service {
 		System.out.println("detailServiceImpl num by session : " + num);
 		MovieDTO movieDto = movieDAO.selectbyMovieNum(num);
 		
-	//	movieDAO.viewCountUpdate(movieDAO.ExtractViewCount(Integer.parseInt(num)), Integer.parseInt(num));
+	//movieDAO.viewCountUpdate(movieDAO.ExtractViewCount(Integer.parseInt(num)), Integer.parseInt(num));
 		req.setAttribute("moviedetail", movieDto);
 
 	}

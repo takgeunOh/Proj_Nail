@@ -142,10 +142,23 @@ list = (ArrayList<MovieDTO>) request.getAttribute("movieList");
                   </div>
                   <div class="card-body">
                    <!-- 여기에 영화 목록 받아 오기 -->
-                   
-                   
-                   
+                   <c:forEach var="movie" items="${movieList }">
+                   	<a href="single-blog.html">
+                          <h2><a href="detail.movie?num=${movie.movieNum }">${movie.movieTitle}</h2></a>
+                          <p>ttteeesssttt.</p>
+                          <a class="button button-blog" href="detail.movie?num=${movie.movieNum }">View More</a>
+                   </c:forEach>
+
                   </div>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
                 </div>
               </div>
             </div>

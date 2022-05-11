@@ -3,14 +3,8 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ include file="/inc/top.jsp"%>
     <%@page import="java.util.ArrayList"%>
+
     <%@page import="MovieModel.MovieDTO"%>
-  
-  
-    <%
-ArrayList<MovieDTO> list = new ArrayList<MovieDTO>();
-list = (ArrayList<MovieDTO>) request.getAttribute("movieList");
-%>
-    
     
     
 
