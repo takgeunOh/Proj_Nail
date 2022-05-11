@@ -22,8 +22,8 @@ list = (ArrayList<MovieDTO>) request.getAttribute("movieList");
 					<h1>Movie Category</h1>
 					<nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Movie Category</li>
+              
+              <li class="breadcrumb-item active" aria-current="page">영화목록</li>
             </ol>
           </nav>
 				</div>
@@ -127,8 +127,12 @@ list = (ArrayList<MovieDTO>) request.getAttribute("movieList");
           </div>
           <!-- End Filter Bar -->
           <!-- Start Best Seller -->
+          
+          
           <section class="lattest-product-area pb-40 category-list">
             <div class="row">
+            
+            <c:forEach var="movie" items="${movieList }">
               <div class="col-md-6 col-lg-4">
                 <div class="card text-center card-product">
                 <!-- 이미지 오버레이  -->
@@ -140,30 +144,30 @@ list = (ArrayList<MovieDTO>) request.getAttribute("movieList");
                       <li><button><i class="ti-heart"></i></button></li>
                     </ul>
                   </div>
-                  <div class="card-body">
-                   <!-- 여기에 영화 목록 받아 오기 -->
-                   <c:forEach var="movie" items="${movieList }">
-                   	<a href="single-blog.html">
-                          <h2><a href="detail.movie?num=${movie.movieNum }">${movie.movieTitle}</h2></a>
-                          <p>ttteeesssttt.</p>
-                          <a class="button button-blog" href="detail.movie?num=${movie.movieNum }">View More</a>
-                   </c:forEach>
-
-                  </div>
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
+                <div class="card-body">
+                   <!-- 여기에 영화 목록 받아 오기 -->                
+                   	
+					<a href="detail.movie?num=${movie.movieNum }">${movie.movieTitle}</a>
+                    <p>ttteeesssttt.</p>
+                    <a class="button button-blog" href="detail.movie?num=${movie.movieNum }">View More</a>                                                    
+                  </div>           
                 </div>
               </div>
+            </c:forEach> 
             </div>
+            
+            
+            
           </section>
           <!-- End Best Seller -->
+          
+          
+          
+          
+          
+          
+          
+          
         </div>
       </div>
     </div>
