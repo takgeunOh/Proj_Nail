@@ -31,7 +31,11 @@ public class MovieDAO {
 
 
 	public MovieDTO selectbyMovieNum(String num) {
-		// TODO Auto-generated method stub
+		conn = JdbcUtil.getConnection();
+		
+		
+		
+		
 		return null;
 	}
 

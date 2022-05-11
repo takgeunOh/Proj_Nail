@@ -21,4 +21,18 @@
   </servlet-mapping>
   
   
+    <servlet>
+    <servlet-name>movie</servlet-name>
+    <servlet-class>kr.siat.controller.DispatcherServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>movie</servlet-name>
+    <url-pattern>*.movie</url-pattern>
+  </servlet-mapping>
+  
+  
+<!-- top.jsp에서 매핍 해줘야됨 -->
+  
+  
+  
 </web-app>

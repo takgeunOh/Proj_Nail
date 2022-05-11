@@ -32,7 +32,7 @@ public class movieListServiceImpl implements Service {
 		if("GET".equals(req.getMethod())) {
 			System.out.println("movieListServiceImpl GET 방식 진입 ");
 			doGet(req, resp);
-			return new ModelAndView("/movie/list", false);
+			return new ModelAndView("/movie/category", false);
 		}
 		else
 			return null;

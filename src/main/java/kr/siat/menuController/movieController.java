@@ -13,11 +13,13 @@ public class movieController implements Controller {
 
 	@Override
 	public ModelAndView request(HttpServletRequest req, HttpServletResponse resp) {
-		if(req.getAttribute("service").equals("/list")) {
+		if(req.getAttribute("service").equals("/category")) {
 			return new movieListServiceImpl().request(req, resp);			
 		}
-		else if(req.getAttribute("service").equals("/detail"))
+		else if(req.getAttribute("service").equals("/detail")) {
 			return new movieDetailServiceImpl().request(req, resp);
+		}
+		
 		return null;
 	}
 
