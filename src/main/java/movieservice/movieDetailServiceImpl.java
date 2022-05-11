@@ -23,8 +23,13 @@ public class movieDetailServiceImpl implements Service {
 	
 	@Override
 	public ModelAndView request(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
-		return null;
+		if("GET".equals(req.getMethod())) {
+			System.out.println("movieDetailServiceImpl GET 방식 진입 ");
+			doGET(req, resp);
+			return new ModelAndView("/movie/detail", false);
+		}
+		else
+			return null;
 	}
 
 }

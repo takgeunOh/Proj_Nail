@@ -52,9 +52,9 @@
 								role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link"
-										href="<%=request.getContextPath()%>/movie/category.movie">Shop Category</a></li>
+										href="<%=request.getContextPath()%>/movie/category.movie">영화 목록</a></li>
 									<li class="nav-item"><a class="nav-link"
-										href="single-product.html">Product Details</a></li>
+										href="<%=request.getContextPath()%>/movie/detail.movie">영화 상세보기</a></li>
 									<li class="nav-item"><a class="nav-link"
 										href="checkout.html">Product Checkout</a></li>
 									<li class="nav-item"><a class="nav-link"
