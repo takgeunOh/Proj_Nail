@@ -268,35 +268,47 @@ if("GET".equals(request.getMethod())) {
 						</div>
 					</div>
 				</div>
+		
 				<div class="comment-form">
-					<h4>Leave a Reply</h4>
-					<form>
-						<div class="form-group form-inline">
-							<div class="form-group col-lg-6 col-md-6 name">
-								<input type="text" class="form-control" id="name"
-									placeholder="Enter Name" onfocus="this.placeholder = ''"
-									onblur="this.placeholder = 'Enter Name'">
+					<h4>댓글 남기기</h4>
+					<%
+					if(session.getAttribute("user_email")!=null) {
+					%>
+						<form>
+							<!-- <div class="form-group form-inline">
+								<div class="form-group col-lg-6 col-md-6 name">
+									<input type="text" class="form-control" id="name"
+										placeholder="Enter Name" onfocus="this.placeholder = ''"
+										onblur="this.placeholder = 'Enter Name'">
+								</div>
+								<div class="form-group col-lg-6 col-md-6 email">
+									<input type="email" class="form-control" id="email"
+										placeholder="Enter email address"
+										onfocus="this.placeholder = ''"
+										onblur="this.placeholder = 'Enter email address'">
+								</div>
 							</div>
-							<div class="form-group col-lg-6 col-md-6 email">
-								<input type="email" class="form-control" id="email"
-									placeholder="Enter email address"
-									onfocus="this.placeholder = ''"
-									onblur="this.placeholder = 'Enter email address'">
+							<div class="form-group">
+								<input type="text" class="form-control" id="subject"
+									placeholder="Subject" onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Subject'">
+							</div> -->
+							<div class="form-group">
+								<textarea class="form-control mb-10" rows="5" name="message"
+									placeholder="Messege" onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Messege'" required=""></textarea>
 							</div>
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" id="subject"
-								placeholder="Subject" onfocus="this.placeholder = ''"
-								onblur="this.placeholder = 'Subject'">
-						</div>
-						<div class="form-group">
-							<textarea class="form-control mb-10" rows="5" name="message"
-								placeholder="Messege" onfocus="this.placeholder = ''"
-								onblur="this.placeholder = 'Messege'" required=""></textarea>
-						</div>
-						<a href="comment.board" class="button button-postComment button--active">Post Comment</a>
-						
-					</form>
+							<a href="" class="button button-postComment button--active" onclick="">Post Comment</a>
+							
+						</form>
+					<%
+					} else {
+					%>
+						<h3>로그인이 필요한 서비스입니다.</h3>
+						<a href="login.member" class="button button-postComment button--active">로그인하러 가기</a>
+					<%
+					}
+					%>
 				</div>
 			</div>
 			<div class="col-lg-4">

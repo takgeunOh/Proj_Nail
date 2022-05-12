@@ -57,3 +57,9 @@ insert into feedbackboard values (
 );
 
 
+create table comments(
+	num number primary key,
+	id varchar2(20) not null,
+	
+)
+

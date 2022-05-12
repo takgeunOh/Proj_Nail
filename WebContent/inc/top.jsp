@@ -91,8 +91,20 @@
 							<li class="nav-item"><button>
 									<i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span>
 								</button></li>
-							<li class="nav-item"><a class="button button-header"
+							
+							<%
+							if(session.getAttribute("user_email")==null) {
+							%>
+								<li class="nav-item"><a class="button button-header"
 								href="<%=request.getContextPath()%>/member/login.member">Login</a></li>
+							<%
+							} else {
+							%>	
+								<li class="nav-item"><a class="button button-header"
+										href="<%=request.getContextPath()%>/member/logout.member">[<%=session.getAttribute("user_name") %>]님 Logout</a></li>
+							<%
+							}
+							%>
 						</ul>
 					</div>
 				</div>

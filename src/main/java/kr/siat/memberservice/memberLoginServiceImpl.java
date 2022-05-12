@@ -44,6 +44,7 @@ public class memberLoginServiceImpl implements Controller {
 					System.out.println(">>> email과 password 일치");
 					session.setAttribute("user_email", email);
 					session.setAttribute("user_name", dto.getUserName());
+					session.setAttribute("user_type", dto.getUserType());
 					System.out.println("memberLogin session name : " + dto.getUserName());
 					
 					/*
