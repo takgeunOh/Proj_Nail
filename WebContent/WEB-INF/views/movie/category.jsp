@@ -163,7 +163,10 @@ list = (ArrayList<MovieDTO>) request.getAttribute("movieList");
           <!-- End Best Seller -->
           
           
-          
+            <aside class="single_sidebar_widget author_widget">
+                          <a class="btn btn-primary" href="insert.movie" role="button">영화 추가</a>
+                          <div class="br"></div>
+                      </aside>
           
           
           

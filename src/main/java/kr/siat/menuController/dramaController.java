@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dramaservice.dramaDetailServiceImpl;
+import dramaservice.dramaInsertServiceImpl;
 import dramaservice.dramaListServiceImpl;
 import dramaservice.dramaWatchServiceImpl;
 import kr.siat.boardservice.boardDeleteServiceImpl;
@@ -30,8 +31,8 @@ public class dramaController implements Controller {
 		else if(req.getAttribute("service").equals("/modify"))
 			return new boardModifyServiceImpl().request(req, resp);
 		
-		else if(req.getAttribute("service").equals("/delete"))
-			return new boardDeleteServiceImpl().request(req, resp);
+		else if(req.getAttribute("service").equals("/insert"))
+			return new dramaInsertServiceImpl().request(req, resp);
 		
 		return null;
 	}

@@ -7,6 +7,7 @@ import kr.siat.boardservice.boardInsertServiceImpl;
 import kr.siat.boardservice.boardListServiceImpl;
 import kr.siat.controller.ModelAndView;
 import movieservice.movieDetailServiceImpl;
+import movieservice.movieInsertServiceImpl;
 import movieservice.movieListServiceImpl;
 import movieservice.movieModifyServiceImpl;
 import movieservice.movieWatchServiceImpl;
@@ -25,6 +26,8 @@ public class movieController implements Controller {
 			return new movieModifyServiceImpl().request(req, resp);
 		}else if(req.getAttribute("service").equals("/watchmovie")) {
 			return new movieWatchServiceImpl().request(req, resp);
+		}else if(req.getAttribute("service").equals("/insert")) {
+			return new movieInsertServiceImpl().request(req, resp);
 		}
 		
 		

@@ -66,6 +66,14 @@ public class MovieDTO {
 
 
 
+	public MovieDTO(String genre, String title, String content, String director, String year, String price,
+			String country, String company, String likecnt, String hide, String age) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
 	public int getMovieAge() {
 		return movieAge;
 	}

@@ -163,7 +163,10 @@ list = (ArrayList<dramaDTO>) request.getAttribute("dramaList");
           <!-- End Best Seller -->
           
           
-          
+            <aside class="single_sidebar_widget author_widget">
+                          <a class="btn btn-primary" href="insert.drama" role="button">드라마 추가</a>
+                          <div class="br"></div>
+                      </aside>
           
           
           

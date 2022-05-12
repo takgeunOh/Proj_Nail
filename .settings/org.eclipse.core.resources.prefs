@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/main/java/kr/siat/boardservice/boardDeleteServiceImpl.java=UTF-8
 encoding//src/main/java/kr/siat/boardservice/boardDetailServiceImpl.java=UTF-8
+encoding//src/main/java/kr/siat/boardservice/boardInsertServiceImpl.java=UTF-8
 encoding//src/main/java/kr/siat/boardservice/boardListServiceImpl.java=UTF-8
 encoding//src/main/java/kr/siat/boardservice/boardModifyServiceImpl.java=UTF-8
 encoding//src/main/java/kr/siat/controller/DispatcherServlet.java=UTF-8
