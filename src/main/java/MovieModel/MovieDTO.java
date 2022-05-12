@@ -14,14 +14,14 @@ public class MovieDTO {
 	private String movieCompany; //배급사
 	private int movieLikeCnt; //좋아요 개수
 	private int movieHide;  //숨김여부
+	private int movieAge; // 연령제한
 	
 	
 	
 	
 	
 	
-	
-	public MovieDTO(int movieNum, String movieGenre, String movieTitle, String movieContent, String movieDirector,
+	/*public MovieDTO(int movieNum, String movieGenre, String movieTitle, String movieContent, String movieDirector,
 			int movieYear, int moviePrice, String movieCountry, String movieCompany, int movieLikeCnt, int movieHide) {
 		super();
 		this.movieNum = movieNum;
@@ -36,7 +36,54 @@ public class MovieDTO {
 		this.movieLikeCnt = movieLikeCnt;
 		this.movieHide = movieHide;
 	}
+	*/
 	
+	
+	public MovieDTO() {
+		this(0, "", "", "", "", 0, 0,"","", 0, 0, 0);
+	}
+	
+
+	
+
+	public MovieDTO(int movieNum, String movieGenre, String movieTitle, String movieContent, String movieDirector,
+			int movieYear, int moviePrice, String movieCountry, String movieCompany, int movieLikeCnt, int movieHide,
+			int movieAge) {
+		super();
+		this.movieNum = movieNum;
+		this.movieGenre = movieGenre;
+		this.movieTitle = movieTitle;
+		this.movieContent = movieContent;
+		this.movieDirector = movieDirector;
+		this.movieYear = movieYear;
+		this.moviePrice = moviePrice;
+		this.movieCountry = movieCountry;
+		this.movieCompany = movieCompany;
+		this.movieLikeCnt = movieLikeCnt;
+		this.movieHide = movieHide;
+		this.movieAge = movieAge;
+	}
+
+
+
+	public MovieDTO(String genre, String title, String content, String director, String year, String price,
+			String country, String company, String likecnt, String hide, String age) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
+	public int getMovieAge() {
+		return movieAge;
+	}
+
+
+
+	public void setMovieAge(int movieAge) {
+		this.movieAge = movieAge;
+	}
+
 
 
 	public int getMovieNum() {
@@ -111,7 +158,7 @@ public class MovieDTO {
 		return "MovieDTO [movieNum=" + movieNum + ", movieGenre=" + movieGenre + ", movieTitle=" + movieTitle
 				+ ", movieContent=" + movieContent + ", movieDirector=" + movieDirector + ", movieYear=" + movieYear
 				+ ", moviePrice=" + moviePrice + ", movieCountry=" + movieCountry + ", movieCompany=" + movieCompany
-				+ ", movieLikeCnt=" + movieLikeCnt + ", movieHide=" + movieHide + "]";
+				+ ", movieLikeCnt=" + movieLikeCnt + ", movieHide=" + movieHide + ", movieAge=" + movieAge + "]";
 	}
 		
 }

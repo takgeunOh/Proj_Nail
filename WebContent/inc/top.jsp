@@ -46,22 +46,43 @@
 						id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto mr-auto">
 							<li class="nav-item active"><a class="nav-link"
-								href="index.html">Home</a></li>
+								href="index.jsp">Home</a></li>
 							<li class="nav-item submenu dropdown"><a href="#"
 								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
+								role="button" aria-haspopup="true" aria-expanded="false">영화</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link"
-										href="category.html">Shop Category</a></li>
+										href="<%=request.getContextPath()%>/movie/category.movie">영화 목록</a></li>
 									<li class="nav-item"><a class="nav-link"
-										href="single-product.html">Product Details</a></li>
+										href="<%=request.getContextPath()%>/movie/detail.movie">영화 상세보기</a></li>
 									<li class="nav-item"><a class="nav-link"
 										href="checkout.html">Product Checkout</a></li>
 									<li class="nav-item"><a class="nav-link"
 										href="confirmation.html">Confirmation</a></li>
-									<li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
+									<li class="nav-item"><a class="nav-link" href="cart/cart.cart">Shopping Cart</a></li>
 								</ul>
 							</li>
+							
+								<li class="nav-item submenu dropdown"><a href="#"
+								class="nav-link dropdown-toggle" data-toggle="dropdown"
+								role="button" aria-haspopup="true" aria-expanded="false">드라마</a>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link"
+										href="<%=request.getContextPath()%>/drama/category.drama">드라마 목록</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="<%=request.getContextPath()%>/drama/detail.drama">드라마 상세보기</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="checkout.html">Product Checkout</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="confirmation.html">Confirmation</a></li>
+									<li class="nav-item"><a class="nav-link" href="cart/cart.cart">Shopping Cart</a></li>
+								</ul>
+							</li>
+							
+							
+							
+							
+							
 							<li class="nav-item submenu dropdown"><a href="#"
 								class="nav-link dropdown-toggle" data-toggle="dropdown"
 								role="button" aria-haspopup="true" aria-expanded="false">Board</a>

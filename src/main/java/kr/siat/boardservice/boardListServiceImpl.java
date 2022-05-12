@@ -35,3 +35,4 @@ public class boardListServiceImpl implements Service {
 	}
 
 }
+///Proj_Nail/WebContent/WEB-INF/WEB-INF/views/bbs/list.jsp
