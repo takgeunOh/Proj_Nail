@@ -38,7 +38,7 @@ list = (ArrayList<MovieDTO>) request.getAttribute("movieList");
       <div class="row">
         <div class="col-xl-3 col-lg-4 col-md-5">
           <div class="sidebar-categories">
-            <div class="head">Browse Categories</div>
+            <div class="head">장르</div>
             <ul class="main-categories">
               <li class="common-filter">
                 <form action="#">
@@ -58,7 +58,7 @@ list = (ArrayList<MovieDTO>) request.getAttribute("movieList");
           <div class="sidebar-filter">
             <div class="top-filter-head">Product Filters</div>
             <div class="common-filter">
-              <div class="head">Brands</div>
+              <div class="head">배급사</div>
               <form action="#">
                 <ul>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Apple<span>(29)</span></label></li>
@@ -70,16 +70,16 @@ list = (ArrayList<MovieDTO>) request.getAttribute("movieList");
               </form>
             </div>
             <div class="common-filter">
-              <div class="head">Color</div>
+              <div class="head">국적</div>
               <form action="#">
                 <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="color"><label for="black">Black<span>(29)</span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="color"><label for="black">Black<span></span></label></li>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="color"><label for="balckleather">Black
-                      Leather<span>(29)</span></label></li>
+                      Leather<span></span></label></li>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="blackred" name="color"><label for="blackred">Black
-                      with red<span>(19)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gold" name="color"><label for="gold">Gold<span>(19)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="spacegrey" name="color"><label for="spacegrey">Spacegrey<span>(19)</span></label></li>
+                      with red<span></span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gold" name="color"><label for="gold">Gold<span></span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="spacegrey" name="color"><label for="spacegrey">Spacegrey<span></span></label></li>
                 </ul>
               </form>
             </div>
@@ -132,12 +132,13 @@ list = (ArrayList<MovieDTO>) request.getAttribute("movieList");
           <section class="lattest-product-area pb-40 category-list">
             <div class="row">
             
-            <c:forEach var="movie" items="${movieList }">
+            <c:forEach var="movie" items="${movieList}">
               <div class="col-md-6 col-lg-4">
                 <div class="card text-center card-product">
                 <!-- 이미지 오버레이  -->
                   <div class="card-product__img">
-                    <img class="card-img" src=  "<%=request.getContextPath()%>/inc/img/product/movieNum2.jpg">
+              
+                    <img class="card-img" src=  "<%=request.getContextPath()%>/inc/img/product/movieNum1.jpg">
                     <ul class="card-product__imgOverlay">
                      
                       <li><button><i class="ti-shopping-cart"></i></button></li>
@@ -147,9 +148,9 @@ list = (ArrayList<MovieDTO>) request.getAttribute("movieList");
                 <div class="card-body">
                    <!-- 여기에 영화 목록 받아 오기 -->                
                    	
-					<a href="detail.movie?num=${movie.movieNum }">${movie.movieTitle}</a>
+					<a href="detail.movie?num=${movie.movieNum}">${movie.movieTitle}</a>
                     <p>${movie.moviePrice}원</p>
-                    <a class="button button-blog" href="detail.movie?num=${movie.movieNum}">View More</a>                                                    
+                    <a class="button button-blog" href="watchmovie.movie?num=${movie.movieNum}">바로보기</a>                                                    
                   </div>           
                 </div>
               </div>
