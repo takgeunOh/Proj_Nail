@@ -31,6 +31,21 @@
   </servlet-mapping>
   
   
+  
+     <servlet>
+    <servlet-name>drama</servlet-name>
+    <servlet-class>kr.siat.controller.DispatcherServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>drama</servlet-name>
+    <url-pattern>*.drama</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
 <!-- top.jsp에서 매핑 해줘야됨 -->
   
   

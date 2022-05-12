@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import kr.siat.menuController.Controller;
 import kr.siat.menuController.boardController;
+import kr.siat.menuController.dramaController;
 import kr.siat.menuController.movieController;
 
 public class HandlerMapping {
@@ -12,7 +13,7 @@ public class HandlerMapping {
 	{
 		mapping.put("/bbs", new boardController());   //게시판
 		mapping.put("/movie", new movieController());  //영화
-		//mapping.put("/movie", new movieController()); //드라마
+		mapping.put("/drama", new dramaController()); //드라마
 		//mapping.put("/movie", new movieController()); //로그인
 	}
 	

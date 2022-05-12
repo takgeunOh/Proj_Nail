@@ -23,7 +23,7 @@ insert into movietable values (
 );
 
 insert into movietable values (
-	movietable_seq.nextval, '역사', '덩케르크', '줄거리줄거리가나다라2', '놀란', 2017, 5000, '미국','회사2', 0, 0, 0
+	movietable_seq.nextval, '역사', '덩케르크', '줄거리줄거리가나다라2', '놀란', 2017, 5000, '미국','회사2', 0, 0, 12
 );
 
 insert into movietable values (
