@@ -46,10 +46,10 @@
 						id="register_form" method="post">
 						<div class="col-md-12 form-group">
 							<input type="text" class="form-control" id="userEmail"
-								name="userEmail" onkeydown="checkEmail()"
+								name="userEmail"
 								placeholder="Email Address" onfocus="this.placeholder = ''"
 								onblur="this.placeholder = 'Email Address'">
-							<!-- <div id="checkMsg">아이디를 입력하세요.</div> -->
+								<div id="checkMsg">이메일을 입력하세요.</div>
 						</div>
 						<div class="col-md-12 form-group">
 							<input type="password" maxlength="15" class="form-control"
@@ -131,7 +131,7 @@ function chkPw() {
 	}
 }
 
-var checkFirst = false;
+/* var checkFirst = false;
 var lastKeyword = '';
 var loopSendKeyword = false;
 
@@ -142,7 +142,7 @@ function checkEmail() {
 		loopSendKeyword = true;
 	}
 	checkFirst = true;
-}
+} */
 
 function checkPwd() {
 	// onkeyup : 키를 입력 중에 발생하는 이벤트
@@ -173,51 +173,6 @@ function checkPwd() {
 	
 	setTimeout("checkPwd();", 500);
 }
-
-function sendEmail() {
-	if(loopSendKeyword == false)
-		return;
-	
-	var keyword = document.search.userEmail.value;
-	console.log(keyword);
-	if(keyword=="") {
-		// 이메일에 입력한 게 없으면
-		lastKeyword = "";
-		document.getElementById("checkMsg").style.color = 'black';
-		document.getElementById("checkMsg").innerHTML = "아이디를 입력하세요.";
-	} else if (keyword != lastKeyword) {
-		lastKeyword = keyword;
-		
-		if(keyword != "") {
-			var params = "email="+encodeURIComponent(keyword);
-			console.log(params);
-			sendRequest("email_check.jsp", params, displayResult, "POST");
-			/* sendRequest("email_check.jsp", params, "POST"); */
-		} else {
-			
-		}
-	}
-	setTimeout("sendEmail();", 500);
-}
-
-/* function displayResult() {
-	if (httpRequest.readyState == 4) {
-		if (httpRequest.status == 200) {
-			var resultText = httpRequest.responseText;
-	    	var listView = document.getElementById('checkMsg');
-	    	
-	    	if(resultText==0) {
-	     		listView.innerHTML = "사용 할 수 있는 ID 입니다";
-	     		listView.style.color = "blue";
-	    	} else {
-	     		listView.innerHTML = "이미 등록된 ID 입니다";
-	     		listView.style.color = "red";
-	    	}
-	   	} else {
-	    	alert("에러 발생: "+httpRequest.status);
-	   	}
-	}
-} */
 
 
 function getXMLHttpRequest(){
@@ -258,73 +213,30 @@ function getXMLHttpRequest(){
 
 }
 
-var httpRequest = null;
-function sendRequest(url, params, callback, method) {
-	httpRequest = getXMLHttpRequest();
+/* $('#userEmail').focusout(function(){
+	let userEmail = $('#userEmail').val(); // input_id에 입력되는 값
+	console.log(userEmail);			// 정상 출력
 	
-	//method 처리
-
-	//method값이 있으면 넘어온 method값을 사용. 없으면 GET으로 설정
-
-	var httpMethod = method?method:"GET";
-
-	
-
-	if(httpMethod!="GET" && httpMethod!="POST"){
-
-		httpMethod = "GET";
-
-	}
-
-	
-
-	//params 처리
-
-	var httpParams = (params==null || params=="")?null:params;
-
-	
-
-	//url처리
-
-	var httpUrl = url;
-
-	if(httpMethod="GET" && httpParams!=null){
-
-		httpUrl += "?" + httpParams;
-
-	}
-
-	
-
-	httpRequest.open(httpMethod,httpUrl,true);
-
-	//POST방식일 경우를 대비해서 작성
-
-	httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-
-	httpRequest.onreadystatechange = callback;
-
-	httpRequest.send(httpMethod=="POST"?httpParams:null);	
-}
-
-function displayResult() {
-	if (httpRequest.readyState == 4) {
-		if (httpRequest.status == 200) {
-			var resultText = httpRequest.responseText;
-	    	var listView = document.getElementById('checkMsg');
-	    	
-	    	if(resultText==0) {
-	     		listView.innerHTML = "사용 할 수 있는 ID 입니다";
-	     		listView.style.color = "blue";
-	    	} else {
-	     		listView.innerHTML = "이미 등록된 ID 입니다";
-	     		listView.style.color = "red";
-	    	}
-	   	} else {
-	    	alert("에러 발생: "+httpRequest.status);
-	   	}
-	}
-}
+	$.ajax({
+		url : "email_check.jsp",
+		type : "post",
+		data : {userEmail: userEmail},
+		dataType : 'json',
+		success : function(result){
+			if(result == 0){
+				$("#checkMsg").html('사용할 수 없는 아이디입니다.');
+				$("#checkMsg").attr('color','red');
+			} else{
+				$("#checkMsg").html('사용할 수 있는 아이디입니다.');
+				$("#checkMsg").attr('color','green');
+			} 
+		},
+		error : function(){
+			alert("서버요청실패");
+		}
+	})
+	 // 이메일 체크는 나중에 할 것.....
+}) */
 
 
 </script>

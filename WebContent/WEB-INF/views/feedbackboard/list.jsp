@@ -77,6 +77,10 @@ list = (ArrayList<BoardDTO>) request.getAttribute("feedbackList");
 			</div>
 		</div>
 	</div>
+	
+	<div class="container">
+		
+	</div>
 </section>
 
 <script src="js/jquery.min.js"></script>

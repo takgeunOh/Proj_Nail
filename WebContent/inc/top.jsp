@@ -65,7 +65,7 @@
 							</li>
 							<li class="nav-item submenu dropdown"><a href="#"
 								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">Board</a>
+								role="button" aria-haspopup="true" aria-expanded="false">게시판</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link"
 										href="<%=request.getContextPath()%>/reviewboard/list.board">리뷰게시판</a></li>
@@ -75,11 +75,10 @@
 							</li>
 							<li class="nav-item submenu dropdown"><a href="#"
 								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">Login</a>
+								role="button" aria-haspopup="true" aria-expanded="false">가격 정책</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/member/login.member">로그인</a></li>
-									<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/member/register.member">회원가입</a></li>
-									<li class="nav-item"><a class="nav-link" href="tracking-order.html">회원목록 보기</a></li>
+									<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/member/login.member">구독제</a></li>
+									<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/member/register.member">다운로드</a></li>
 								</ul>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
@@ -93,7 +92,7 @@
 									<i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span>
 								</button></li>
 							<li class="nav-item"><a class="button button-header"
-								href="#">Buy Now</a></li>
+								href="<%=request.getContextPath()%>/member/login.member">Login</a></li>
 						</ul>
 					</div>
 				</div>

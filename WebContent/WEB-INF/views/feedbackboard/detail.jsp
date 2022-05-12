@@ -51,6 +51,10 @@ FeedbackDTO dto = (FeedbackDTO)request.getAttribute("feedbackDto");
         <p><%=dto.getContent() %></p>
  
     </div>
+    
+    <div id="list-menu" style="text-align:  right;">
+        <input type="button" value="새글쓰기" onclick="goWrite()" />
+    </div>
  
     <%-- <div id="view-menu">
         <div class="fl">
@@ -83,10 +87,8 @@ FeedbackDTO dto = (FeedbackDTO)request.getAttribute("feedbackDto");
     </c:forEach>
     <!--  반복 구간 끝 -->
     </table>
-    <div id="list-menu" style="text-align:  right;">
-        <input type="button" value="새글쓰기" onclick="goWrite()" />
-    </div> --%>
-</div>
+</div> --%>
 <!--  본문 끝 -->
+
 
 <%@ include file="/inc/bottom.jsp"%>
