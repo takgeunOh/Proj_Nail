@@ -137,9 +137,9 @@ list = (ArrayList<MovieDTO>) request.getAttribute("movieList");
                 <div class="card text-center card-product">
                 <!-- 이미지 오버레이  -->
                   <div class="card-product__img">
-                    <img class="card-img" src="img/product/product1.png" alt="">
+                    <img class="card-img" src=  "<%=request.getContextPath()%>/inc/img/product/movieNum2.jpg">
                     <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
+                     
                       <li><button><i class="ti-shopping-cart"></i></button></li>
                       <li><button><i class="ti-heart"></i></button></li>
                     </ul>
@@ -148,15 +148,15 @@ list = (ArrayList<MovieDTO>) request.getAttribute("movieList");
                    <!-- 여기에 영화 목록 받아 오기 -->                
                    	
 					<a href="detail.movie?num=${movie.movieNum }">${movie.movieTitle}</a>
-                    <p>ttteeesssttt.</p>
-                    <a class="button button-blog" href="detail.movie?num=${movie.movieNum }">View More</a>                                                    
+                    <p>${movie.moviePrice}원</p>
+                    <a class="button button-blog" href="detail.movie?num=${movie.movieNum}">View More</a>                                                    
                   </div>           
                 </div>
               </div>
             </c:forEach> 
             </div>
             
-            
+        
             
           </section>
           <!-- End Best Seller -->
@@ -174,5 +174,5 @@ list = (ArrayList<MovieDTO>) request.getAttribute("movieList");
   </section>
 	<!-- ================ category section end ================= -->		  
 	
-	
+	  
 <%@ include file="/inc/bottom.jsp"%>

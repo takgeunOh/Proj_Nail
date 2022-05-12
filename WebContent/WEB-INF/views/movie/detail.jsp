@@ -8,7 +8,13 @@
     
        <%
 MovieDTO dto = new MovieDTO();
-       
+       if("GET".equals(request.getMethod())) {
+    		dto = (MovieDTO) request.getAttribute("moviedetail");
+
+    		session.setAttribute("MoviveSessionNum", dto.getMovieNum());
+    	} else if("POST".equals(request.getMethod())) {
+    		dto = (MovieDTO) request.getAttribute("movieaftermodify");
+    	}
        
 %>
     
@@ -26,13 +32,20 @@ MovieDTO dto = new MovieDTO();
             </ol>
           </nav>         
           <p>test</p>  
+  
 		</div>
  <!-- 여기에 영화 상세 정보? -->
-   <p>test</p>  
-   <h2>${movie.movieTitle}</h2>
+  				<div class="text-center">
+  				 <h2>${movie.movieTitle}</h2>
+   			<div class="col-lg-9 col-md-9 movie_details"  > 
+						<h2><%=dto.getMovieTitle() %></h2>
+						<p class="excert"><%=dto.getMovieGenre() %>               <%=dto.getMovieYear() %></p>
+						<p class="excert"><%=dto.getMovieDirector() %></p>
+						<p class="excert"><%=dto.getMovieAge() %>세 관람가</p>
+						<p class="excert"><%=dto.getMovieContent() %></p>					<!-- 서브타이틀 정도로 쓰기 -->
+					</div>
    
-   
-   
+  </div>
    
    
    
