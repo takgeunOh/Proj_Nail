@@ -13,7 +13,7 @@
   
   <servlet>
     <servlet-name>board</servlet-name>
-    <servlet-class>kr.siat.controller.DispatcherServlet</servlet-class>
+    <servlet-class>controller.DispatcherServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>board</servlet-name>
@@ -23,7 +23,7 @@
   
     <servlet>
     <servlet-name>movie</servlet-name>
-    <servlet-class>kr.siat.controller.DispatcherServlet</servlet-class>
+    <servlet-class>controller.DispatcherServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>movie</servlet-name>
@@ -34,7 +34,7 @@
   
      <servlet>
     <servlet-name>drama</servlet-name>
-    <servlet-class>kr.siat.controller.DispatcherServlet</servlet-class>
+    <servlet-class>controller.DispatcherServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>drama</servlet-name>
@@ -44,7 +44,7 @@
   
       <servlet>
     <servlet-name>cart</servlet-name>
-    <servlet-class>kr.siat.controller.DispatcherServlet</servlet-class>
+    <servlet-class>controller.DispatcherServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>cart</servlet-name>

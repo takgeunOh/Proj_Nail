@@ -6,9 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import MovieModel.MovieDTO;
-import kr.siat.boardservice.Service;
-import kr.siat.controller.ModelAndView;
-import kr.siat.model.BoardDTO;
+import boardservice.Service;
+import controller.ModelAndView;
+import model.BoardDTO;
 
 public class movieModifyServiceImpl implements Service {
 

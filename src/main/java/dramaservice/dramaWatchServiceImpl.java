@@ -5,8 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import DramaModel.dramaDTO;
 import MovieModel.MovieDTO;
-import kr.siat.boardservice.Service;
-import kr.siat.controller.ModelAndView;
+import boardservice.Service;
+import controller.ModelAndView;
 
 public class dramaWatchServiceImpl implements Service {
 
