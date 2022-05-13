@@ -150,8 +150,7 @@ list = (ArrayList<MovieDTO>) request.getAttribute("movieList");
                    	
 					<a href="detail.movie?num=${movie.movieNum}">${movie.movieTitle}</a>
                     <p>${movie.moviePrice}원</p>
-                    <a class="button button-blog" href="watchmovie.movie?num=${movie.movieNum}">바로보기</a>  
-                                                                      
+                    <a class="button button-blog" href="watchmovie.movie?num=${movie.movieNum}">바로보기</a>                                                    
                   </div>           
                 </div>
               </div>

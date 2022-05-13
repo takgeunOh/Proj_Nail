@@ -14,7 +14,7 @@ public class MovieDAO {
 
 	
  	final String SQL_SELECT = "select * from movietable order by movienum desc";
-	final String SQL_INSERT = "insert into movietable values(movieboard_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?,?)";
+	final String SQL_INSERT = "insert into movietable values(movieboard_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 	final String SQL_DETAIL = "select * from movietable where movienum=?";
 	final String SQL_UPDATE = "update movietable set movietitle=?, moviecontent=? WHERE movienum=?";
 	final String SQL_DELETE = "delete movietable where movienum=?";
@@ -125,9 +125,9 @@ public class MovieDAO {
 			ptmt.setInt(6, dto.getMoviePrice());
 			ptmt.setString(7, dto.getMovieCountry());
 			ptmt.setString(8, dto.getMovieCompany());
-		
-			ptmt.setInt(9, dto.getMovieHide());
-			ptmt.setInt(10, dto.getMovieAge());
+			ptmt.setInt(9, dto.getMovieLikeCnt());
+			ptmt.setInt(10, dto.getMovieHide());
+			ptmt.setInt(11, dto.getMovieAge());
 			
 			
 			

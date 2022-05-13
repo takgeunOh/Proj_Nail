@@ -11,6 +11,7 @@ dramaDTO dto = new dramaDTO();
        if("GET".equals(request.getMethod())) {
     		dto = (dramaDTO) request.getAttribute("dramawatch");
 
+    		
     		session.setAttribute("DramaSessionNum", dto.getDramaNum());
     	} else if("POST".equals(request.getMethod())) {
     		dto = (dramaDTO) request.getAttribute("Dramaaftermodify");

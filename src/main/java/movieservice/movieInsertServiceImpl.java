@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import MovieModel.MovieDTO;
-import boardservice.Service;
-import controller.ModelAndView;
+import kr.siat.boardservice.Service;
+import kr.siat.controller.ModelAndView;
 
 public class movieInsertServiceImpl implements Service {
 
@@ -28,7 +28,7 @@ public class movieInsertServiceImpl implements Service {
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=UTF-8");
 		
-		//String movienum = req.getParameter("num");
+		
 		String genre = req.getParameter("genre");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
@@ -37,7 +37,7 @@ public class movieInsertServiceImpl implements Service {
 		String price = req.getParameter("price");
 		String country = req.getParameter("country");
 		String company = req.getParameter("company");
-		//String likecnt = req.getParameter("lcnt");
+	
 		String hide = req.getParameter("hide");
 		String age = req.getParameter("age");
 		
@@ -56,7 +56,7 @@ public class movieInsertServiceImpl implements Service {
 		}
 		else if("POST".equals(req.getMethod())){
 			doPost(req, resp);
-			return new ModelAndView("category.movie", true);
+			return new ModelAndView("list.movie", true);
 		}
 		else
 			return null;

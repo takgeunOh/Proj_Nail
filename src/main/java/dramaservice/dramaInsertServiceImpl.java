@@ -3,8 +3,8 @@ package dramaservice;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import boardservice.Service;
-import controller.ModelAndView;
+import kr.siat.boardservice.Service;
+import kr.siat.controller.ModelAndView;
 
 public class dramaInsertServiceImpl implements Service {
 
