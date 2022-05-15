@@ -1,13 +1,16 @@
+<%@page import="kr.siat.model.BoardDAO"%>
 <%@page import="kr.siat.model.BoardDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/inc/top.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%
 ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
 list = (ArrayList<BoardDTO>) request.getAttribute("boardList");
+BoardDAO dao = new BoardDAO();
 %>
 
 <!-- ================ start banner area ================= -->
@@ -97,23 +100,16 @@ list = (ArrayList<BoardDTO>) request.getAttribute("boardList");
                                       <a href="#">Lifestyle</a>
                                   </div>
                                   <ul class="blog_meta list">
+                                      <li><a href="#">${board.boardAuthor }<i class="lnr lnr-user"></i></a></li>
+                                      <li><a href="#">${board.boardRegidate }<i class="lnr lnr-calendar-full"></i></a></li>
+                                      <li><a href="#">${board.boardViewCnt }<i class="lnr lnr-eye"></i></a></li>
                                       <li>
-                                          <a href="#">${board.boardAuthor }
-                                              <i class="lnr lnr-user"></i>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="#">${board.boardRegidate }
-                                              <i class="lnr lnr-calendar-full"></i>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="#">${board.boardViewCnt }
-                                              <i class="lnr lnr-eye"></i>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="#">06 Comments
+                                          <a href="#">
+                                          <%
+                                          BoardDTO dto = (BoardDTO)pageContext.getAttribute("board");
+                                          int boardNum = dto.getBoardNum();
+                                          int commetCount = dao.getCommentCount(boardNum);
+                                          %> <%=commetCount %> Comments
                                               <i class="lnr lnr-bubble"></i>
                                           </a>
                                       </li>

@@ -17,6 +17,7 @@ public class BoardDAO {
 	final String SQL_UPDATE = "update movieboard set boardtitle=?, boardcontent=? WHERE boardnum=?";
 	final String SQL_DELETE = "delete movieboard where boardnum=?";
 	final String SQL_UPDATE_VIEWCOUNT = "update movieboard set boardviewcnt=? where boardnum=?";
+	final String SQL_GET_COMMENTCOUNT = "select count(comment_num) from board_comment where comment_board=?";
 	
 	private Connection conn;
 	private Statement stmt;
@@ -200,5 +201,29 @@ public class BoardDAO {
 		}
 		
 		JdbcUtil.close(conn, ptmt);
+	}
+	
+	public int getCommentCount(int boardNum) {
+		
+		// System.out.println("BoardDAO에서 댓글개수 구할 때 넘어온 게시글 번호 : " + boardNum);				// 정상 출력
+		int count=0;
+		
+		conn = JdbcUtil.getConnection();
+		try {
+			ptmt = conn.prepareStatement(SQL_GET_COMMENTCOUNT);
+			ptmt.setInt(1, boardNum);
+			rs = ptmt.executeQuery();
+			
+			if(rs.next()) {
+				// System.out.println(rs.getInt("count(comment_num)")); 정상 출력
+				count = rs.getInt("count(comment_num)");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		JdbcUtil.close(conn, ptmt, rs);
+		return count;
 	}
 }

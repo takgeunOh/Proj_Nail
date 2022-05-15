@@ -8,16 +8,22 @@ import javax.servlet.http.HttpSession;
 
 import kr.siat.controller.ModelAndView;
 import kr.siat.model.BoardDTO;
+import kr.siat.model.CommentDTO;
 
 public class reviewBoardDetailServiceImpl implements Service {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+		HttpSession session = req.getSession();
 		String num = req.getParameter("num");
 		System.out.println("detailServiceImpl num by session : " + num);
 		BoardDTO boardDto = boardDAO.selectbyBoardNum(num);
+		ArrayList<CommentDTO> commentList = commentDAO.getCommentList(Integer.parseInt(num));
 		
 		boardDAO.viewCountUpdate(boardDAO.ExtractViewCount(Integer.parseInt(num)), Integer.parseInt(num));
 		req.setAttribute("boarddetail", boardDto);
+		req.setAttribute("boardCommentList", commentList);
+		// session.setAttribute("boardCommentList", commentList);
+		System.out.println("reviewBoardDetail 서비스에서의 commentList : " + commentList.toString());
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) {

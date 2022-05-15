@@ -7,6 +7,7 @@ import kr.siat.controller.ModelAndView;
 import kr.siat.memberservice.memberLoginServiceImpl;
 import kr.siat.memberservice.memberLogoutServiceImpl;
 import kr.siat.memberservice.memberRegisterServiceImpl;
+import kr.siat.priceinfoservice.membershipInfoServiceImpl;
 
 public class memberController implements Controller{
 
@@ -19,6 +20,8 @@ public class memberController implements Controller{
 			return new memberLoginServiceImpl().request(req, resp);
 		else if(req.getAttribute("service").equals("/logout"))
 			return new memberLogoutServiceImpl().request(req, resp);
+		else if(req.getAttribute("service").equals("/membershipInfo"))
+			return new membershipInfoServiceImpl().request(req, resp);
 		
 		return null;
 	}

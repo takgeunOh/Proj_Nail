@@ -1,9 +1,12 @@
+<%@page import="kr.siat.model.CommentDAO"%>
+<%@page import="kr.siat.model.CommentDTO"%>
 <%@page import="kr.siat.model.BoardDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/inc/top.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%
 BoardDTO dto = new BoardDTO();
@@ -14,6 +17,11 @@ if("GET".equals(request.getMethod())) {
 } else if("POST".equals(request.getMethod())) {
 	dto = (BoardDTO) request.getAttribute("boardaftermodify");
 }
+
+ArrayList<CommentDTO> commentList = new ArrayList<CommentDTO>();
+commentList = (ArrayList<CommentDTO>)request.getAttribute("boardCommentList");
+// System.out.println("detail.jsp에서의 boardCommentList : " + commentList);		// 정상 출력
+System.out.println("detail.jsp에서의 userEmail : " + session.getAttribute("user_email"));
 %>
 
 <!-- ================ start banner area ================= -->
@@ -63,7 +71,7 @@ if("GET".equals(request.getMethod())) {
 								</a></li>
 								<li><a href="#"><%=dto.getBoardViewCnt() %> <i class="lnr lnr-eye"></i>
 								</a></li>
-								<li><a href="#">06 Comments <i class="lnr lnr-bubble"></i>
+								<li><a href="#">${fn:length(boardCommentList) } Comments<i class="lnr lnr-bubble"></i>
 								</a></li>
 							</ul>
 							<ul class="social-links">
@@ -83,7 +91,7 @@ if("GET".equals(request.getMethod())) {
 						<p class="excert"><%=dto.getBoardContent() %></p>					<!-- 서브타이틀 정도로 쓰기 -->
 					</div>
 					<div class="col-lg-12">													<!-- 여기서부터는 콘텐츠 -->
-						<div class="quotes">MCSE boot camps have its supporters and
+						<%-- <div class="quotes">MCSE boot camps have its supporters and
 							its detractors. Some people do not understand why you should have
 							to spend money on boot camp when you can get the MCSE study
 							materials yourself at a fraction of the camp price. However, who
@@ -112,7 +120,7 @@ if("GET".equals(request.getMethod())) {
 									yourself at a fraction of the camp price. However, who has the
 									willpower.</p>
 							</div>
-						</div>
+						</div> --%>
 					</div>
 				</div>
 				<div class="navigation-area">
@@ -161,117 +169,62 @@ if("GET".equals(request.getMethod())) {
 				
 				
 				<div class="comments-area">
-					<h4>05 Comments</h4>
-					<div class="comment-list">
-						<div class="single-comment justify-content-between d-flex">
-							<div class="user justify-content-between d-flex">
-								<div class="thumb">
-									<img
-										src="${pageContext.request.contextPath }/inc/img/blog/c1.jpg"
-										alt="">
+					<!-- <h4>05 Comments</h4> -->
+					<h4>${fn:length(boardCommentList) } Comments</h4>
+					<!-- commentList : 해당 글에 있는 댓글의 목록 (reviewBoardDetail에서 넘어와야할듯) -->
+					<c:choose>
+						<c:when test="${boardCommentList != null}">
+							<c:forEach var="comment" items="${boardCommentList }">
+								<div class="comment-list">
+									<div class="single-comment justify-content-between d-flex">
+										<div class="user justify-content-between d-flex">
+											<div class="thumb">
+												<img
+													src="${pageContext.request.contextPath }/inc/img/blog/c1.jpg"
+													alt="">
+											</div>
+											<div class="desc">
+												<h5><a href="#">${comment.comment_id }</a></h5>
+												<p class="date">${comment.comment_date }</p>
+												<p class="comment">${comment.comment_content }</p>
+											</div>
+										</div>
+										<div class="reply-btn">
+										<%
+											if(session.getAttribute("user_email")!=null) {
+												CommentDTO commentDTO = (CommentDTO)pageContext.getAttribute("comment");
+												System.out.println("detail.jsp commentDTO : " + commentDTO.toString());
+												if(session.getAttribute("user_email").equals(commentDTO.getComment_id())) {
+										%>
+													<a href="#" class="btn-reply text-uppercase" style="color:blue">reply</a>
+													<!-- comment.comment_num : 댓글의 글 번호 전달 -->
+													<input type="hidden" id="commentNum" name="commentNum" value="<%=commentDTO.getComment_num()%>">
+													<input type="hidden" id="boardNum" name="boardNum" value="<%=commentDTO.getComment_board()%>">
+													<a id="deleteBtn" href="#" class="btn-reply text-uppercase" style="color:red">delete</a>
+										<%		
+												}
+											} else {}
+											
+										%>
+										</div>
+									</div>
 								</div>
-								<div class="desc">
-									<h5>
-										<a href="#">Emilly Blunt</a>
-									</h5>
-									<p class="date">December 4, 2017 at 3:12 pm</p>
-									<p class="comment">Never say goodbye till the end comes!</p>
-								</div>
-							</div>
-							<div class="reply-btn">
-								<a href="#" class="btn-reply text-uppercase">reply</a>
-							</div>
-						</div>
-					</div>
-					<div class="comment-list left-padding">
-						<div class="single-comment justify-content-between d-flex">
-							<div class="user justify-content-between d-flex">
-								<div class="thumb">
-									<img
-										src="${pageContext.request.contextPath }/inc/img/blog/c2.jpg"
-										alt="">
-								</div>
-								<div class="desc">
-									<h5>
-										<a href="#">Elsie Cunningham</a>
-									</h5>
-									<p class="date">December 4, 2017 at 3:12 pm</p>
-									<p class="comment">Never say goodbye till the end comes!</p>
-								</div>
-							</div>
-							<div class="reply-btn">
-								<a href="#" class="btn-reply text-uppercase">reply</a>
-							</div>
-						</div>
-					</div>
-					<div class="comment-list left-padding">
-						<div class="single-comment justify-content-between d-flex">
-							<div class="user justify-content-between d-flex">
-								<div class="thumb">
-									<img
-										src="${pageContext.request.contextPath }/inc/img/blog/c3.jpg"
-										alt="">
-								</div>
-								<div class="desc">
-									<h5>
-										<a href="#">Annie Stephens</a>
-									</h5>
-									<p class="date">December 4, 2017 at 3:12 pm</p>
-									<p class="comment">Never say goodbye till the end comes!</p>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<div class="comment-list">
+								<div class="single-comment justify-content-between d-flex">
+									<h6><strong>등록된 댓글이 없습니다. 리뷰에 대한 첫 댓글을 달아보세요.</strong></h6>
 								</div>
 							</div>
-							<div class="reply-btn">
-								<a href="#" class="btn-reply text-uppercase">reply</a>
-							</div>
-						</div>
-					</div>
-					<div class="comment-list">
-						<div class="single-comment justify-content-between d-flex">
-							<div class="user justify-content-between d-flex">
-								<div class="thumb">
-									<img
-										src="${pageContext.request.contextPath }/inc/img/blog/c4.jpg"
-										alt="">
-								</div>
-								<div class="desc">
-									<h5>
-										<a href="#">Maria Luna</a>
-									</h5>
-									<p class="date">December 4, 2017 at 3:12 pm</p>
-									<p class="comment">Never say goodbye till the end comes!</p>
-								</div>
-							</div>
-							<div class="reply-btn">
-								<a href="#" class="btn-reply text-uppercase">reply</a>
-							</div>
-						</div>
-					</div>
-					<div class="comment-list">
-						<div class="single-comment justify-content-between d-flex">
-							<div class="user justify-content-between d-flex">
-								<div class="thumb">
-									<img
-										src="${pageContext.request.contextPath }/inc/img/blog/c5.jpg"
-										alt="">
-								</div>
-								<div class="desc">
-									<h5>
-										<a href="#">Ina Hayes</a>
-									</h5>
-									<p class="date">December 4, 2017 at 3:12 pm</p>
-									<p class="comment">Never say goodbye till the end comes!</p>
-								</div>
-							</div>
-							<div class="reply-btn">
-								<a href="#" class="btn-reply text-uppercase">reply</a>
-							</div>
-						</div>
-					</div>
+						</c:otherwise>
+					</c:choose>
+					
 				</div>
 		
 				<div class="comment-form">
 					<h4>댓글 남기기</h4>
-					<%
+					<%-- <%
 					if(session.getAttribute("user_email")!=null) {
 					%>
 						<form>
@@ -296,19 +249,31 @@ if("GET".equals(request.getMethod())) {
 							<div class="form-group">
 								<textarea class="form-control mb-10" rows="5" name="message"
 									placeholder="Messege" onfocus="this.placeholder = ''"
-									onblur="this.placeholder = 'Messege'" required=""></textarea>
+									onblur="this.placeholder = 'Messege'" required></textarea>
 							</div>
-							<a href="" class="button button-postComment button--active" onclick="">Post Comment</a>
+							<a id="cmtCnt-btn" class="button button-postComment button--active">Post Comment</a>
 							
 						</form>
 					<%
 					} else {
 					%>
-						<h3>로그인이 필요한 서비스입니다.</h3>
+						<h5>로그인이 필요한 서비스입니다.</h5>
 						<a href="login.member" class="button button-postComment button--active">로그인하러 가기</a>
 					<%
 					}
-					%>
+					%> --%>
+					
+					<form id="writeCommentForm">
+						<input type="hidden" id="boardNum" name="comment_board" value="<%=dto.getBoardNum()%>">
+						<input type="hidden" id="userEmail" name="comment_id" value="<%=session.getAttribute("user_email") %>">
+						<div class="form-group">
+								<textarea id="cmtCnt" class="form-control mb-10" rows="5" name="comment_content"
+									placeholder="Messege" onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Messege'" required></textarea>
+						</div>
+						<a href="#" id="cmtCnt-btn" class="button button-postComment button--active" onclick="writeCmt()">Post Comment</a>
+						<!-- <button type="submit">댓글 등록</button> -->
+					</form>
 				</div>
 			</div>
 			<div class="col-lg-4">
@@ -493,5 +458,113 @@ if("GET".equals(request.getMethod())) {
   </div>
 </div>
 
+
+<script src="http://code.jquery.com/jquery-latest.js"></script> 
+<script>
+
+
+
+var httpRequest = null;
+
+// httpRequest 객체 생성
+function getXMLHttpRequest() {
+	var httpRequest = null;
+	
+	if(window.ActiveXObject){
+        try{
+            httpRequest = new ActiveXObject("Msxml2.XMLHTTP");    
+        } catch(e) {
+            try{
+                httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e2) { httpRequest = null; }
+        }
+    }
+    else if(window.XMLHttpRequest){
+        httpRequest = new window.XMLHttpRequest();
+    }
+    return httpRequest;
+}
+
+
+<%-- function writeCmt() {
+	var form = document.getElementById("writeCommentForm");
+	
+	var board = form.comment_board.value;
+	var email = '<%=session.getAttribute("user_email")%>';
+	var content = form.comment_content.value;
+	
+	if(!content) {
+		alert("내용을 입력하세요.");
+		return false;
+	} else {
+		var param = "comment_board=" + board + "&comment_id=" + email + "&comment_content=" + content;
+		
+		httpRequest = getXMLHttpRequest();
+        httpRequest.onreadystatechange = checkFunc;
+        httpRequest.open("POST", "CommentWriteAction.co", true);    
+        httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=EUC-KR'); 
+        httpRequest.send(param);
+
+	}
+} --%>
+
+
+
+
+
+
+
+function checkFunc() {
+	if(httpRequest.readyState === 4 && httpRequest.status === 200) {
+		var resultText = httpRequest.responseText;
+		if(resultText==1)
+			document.location.reload();
+	}
+}
+
+
+$("#cmtCnt-btn").click(function() {
+	<%
+	if(session.getAttribute("user_email")==null) {
+	%>
+		alert("로그인이 필요합니다.");
+		location.href="<%=request.getContextPath() %>/member/login.member";
+	<%
+	} else {
+	%>
+		$.ajax({
+			url: "<%=request.getContextPath() %>/reviewboard/insertComment.board",
+			type:"POST",
+			data: {
+				boardNum : $("#boardNum").val(),
+				userEmail : $("#userEmail").val(),
+				content : $("#cmtCnt").val()
+			},
+			success:function() {
+				alert("댓글이 작성되었습니다.")
+				location.reload()
+			},
+		})
+	<%
+	}
+	%>
+})
+
+$("#deleteBtn").click(function() {
+	
+	$.ajax({
+		url: "<%=request.getContextPath()%>/reviewboard/deleteComment.board",
+		type:"GET",
+		data: {
+			commentNum : $("#commentNum").val(),
+			boardNum : $("#boardNum").val()
+		},
+		sucess:function() {
+			alert("댓글이 삭제되었습니다.")
+			location.reload()
+		},
+	})
+})
+</script>
 
 <%@ include file="/inc/bottom.jsp"%>

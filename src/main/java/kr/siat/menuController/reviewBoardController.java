@@ -5,10 +5,13 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.siat.boardservice.ReviewBoardDeleteCommentServiceImpl;
+import kr.siat.boardservice.ReviewBoardInsertCommentServiceImpl;
 import kr.siat.boardservice.reviewBoardDeleteServiceImpl;
 import kr.siat.boardservice.reviewBoardDetailServiceImpl;
 import kr.siat.boardservice.reviewBoardInsertServiceImpl;
 import kr.siat.boardservice.reviewBoardListServiceImpl;
+import kr.siat.boardservice.reviewBoardLoginServiceImpl;
 import kr.siat.boardservice.reviewBoardModifyServiceImpl;
 import kr.siat.controller.ModelAndView;
 
@@ -29,6 +32,12 @@ public class reviewBoardController implements Controller{
 			return new reviewBoardModifyServiceImpl().request(req, resp);
 		else if(req.getAttribute("service").equals("/delete"))
 			return new reviewBoardDeleteServiceImpl().request(req, resp);
+		else if(req.getAttribute("service").equals("/login")) 
+			return new reviewBoardLoginServiceImpl().request(req, resp);
+		else if(req.getAttribute("service").equals("/insertComment"))
+			return new ReviewBoardInsertCommentServiceImpl().request(req, resp);
+		else if(req.getAttribute("service").equals("/deleteComment")) 
+			return new ReviewBoardDeleteCommentServiceImpl().request(req, resp);
 		
 		return null;
 	}
