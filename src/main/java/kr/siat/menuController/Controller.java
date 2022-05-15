@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.siat.controller.ModelAndView;
 import kr.siat.model.BoardDAO;
 import kr.siat.model.CommentDAO;
+import kr.siat.model.FeedbackAnswerDAO;
 import kr.siat.model.FeedbackDAO;
 import kr.siat.model.MemberDAO;
 import kr.siat.model.MovieDAO;
@@ -13,6 +14,7 @@ import kr.siat.model.dramaDAO;
 
 
 public interface Controller {
+	FeedbackAnswerDAO feedbackAnswerDAO = new FeedbackAnswerDAO();
 	CommentDAO commentDAO = new CommentDAO();
 	MemberDAO memberDAO = new MemberDAO();
 	FeedbackDAO feedbackDAO = new FeedbackDAO();

@@ -3,6 +3,7 @@ package kr.siat.menuController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.siat.boardservice.feedbackBoardAnswerServiceImpl;
 import kr.siat.boardservice.feedbackBoardChangeProcessServiceImpl;
 import kr.siat.boardservice.feedbackBoardDetailServiceImpl;
 import kr.siat.boardservice.feedbackBoardListServiceImpl;
@@ -24,6 +25,8 @@ public class feedbackBoardController implements Controller{
 			return new feedbackBoardDetailServiceImpl().request(req, resp);
 		else if (req.getAttribute("service").equals("/changeProcess"))
 			return new feedbackBoardChangeProcessServiceImpl().request(req, resp);
+		else if (req.getAttribute("service").equals("/insertAnswer"))
+			return new feedbackBoardAnswerServiceImpl().request(req, resp);
 		/*
 		 * else if(req.getAttribute("service").equals("/insert")) return new
 		 * reviewBoardInsertServiceImpl().request(req, resp); else
