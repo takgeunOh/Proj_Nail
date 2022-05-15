@@ -1,3 +1,4 @@
+<%@page import="kr.siat.model.FeedbackDTO"%>
 <%@page import="kr.siat.model.BoardDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,8 +9,8 @@
 	href="${pageContext.request.contextPath}/css/notice.css">
 
 <%
-	ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
-list = (ArrayList<BoardDTO>) request.getAttribute("feedbackList");
+ArrayList<FeedbackDTO> list = new ArrayList<FeedbackDTO>();
+list = (ArrayList<FeedbackDTO>) request.getAttribute("feedbackList");
 %>
 
 <link
@@ -65,9 +66,25 @@ list = (ArrayList<BoardDTO>) request.getAttribute("feedbackList");
 									<td>${feedback.author }</td>
 									<td>${feedback.regidate }</td>
 									<td>${feedback.viewcnt }</td>
-									<td><a href="#" class="btn btn-success">Progress</a></td>
+									<%
+									FeedbackDTO dto = (FeedbackDTO)pageContext.getAttribute("feedback");
+									// System.out.println("문의게시판 리스트 번호 : " + dto.getNum());			// 정상 출력
+									if(dto.getAnswerCheck()==1) {
+									%>
+									<td><a href="javascript:changeProcess(${feedback.num }, <%=session.getAttribute("user_type") %>)" class="btn btn-danger">답변 대기</a></td>
 									<!-- <td><a href="#" class="btn btn-warning">Open</a></td> -->
 									<!-- <td><a href="#" class="btn btn-danger">On hold</a></td> -->
+									<%
+									} else if(dto.getAnswerCheck()==2) {
+									%>
+										<td><a href="javascript:changeProcess(${feedback.num }, <%=session.getAttribute("user_type") %>)" class="btn btn-warning">답변 처리 중</a></td>
+									<%
+									} else if(dto.getAnswerCheck()==3){
+									%>
+										<td><a href="javascript:changeProcess(${feedback.num }, <%=session.getAttribute("user_type") %>)" class="btn btn-success">답변 완료</a></td>
+									<%
+									}
+									%>
 								</tr>
 
 							</c:forEach>
@@ -88,6 +105,38 @@ list = (ArrayList<BoardDTO>) request.getAttribute("feedbackList");
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 
+
+<script src="http://code.jquery.com/jquery-latest.js"></script> 
+<script>
+
+function changeProcess(feedbackIdx, userType) {
+	var query = {idx : feedbackIdx};
+
+	<%
+	if(session.getAttribute("user_email")!=null) {
+	%>
+		if(userType==0) {
+			$.ajax({
+				url : "<%=request.getContextPath()%>/feedbackboard/changeProcess.board",
+				type:"GET",
+				data : query,
+				success:function(data) {
+					location.reload();
+				},
+			});
+		} else {
+			alert("관리자만 가능합니다.");
+		}
+	<%
+	}
+	else {
+	%>
+		alert("관리자만 가능합니다.");
+	<%
+	}
+	%>
+}
+</script>
 
 
 <%@ include file="/inc/bottom.jsp"%>

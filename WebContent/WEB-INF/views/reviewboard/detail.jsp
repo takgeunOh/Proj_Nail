@@ -168,7 +168,7 @@ System.out.println("detail.jsp에서의 userEmail : " + session.getAttribute("us
 				
 				
 				
-				<div class="comments-area">
+				<div id="comment_area" class="comments-area">
 					<!-- <h4>05 Comments</h4> -->
 					<h4>${fn:length(boardCommentList) } Comments</h4>
 					<!-- commentList : 해당 글에 있는 댓글의 목록 (reviewBoardDetail에서 넘어와야할듯) -->
@@ -193,14 +193,21 @@ System.out.println("detail.jsp에서의 userEmail : " + session.getAttribute("us
 										<%
 											if(session.getAttribute("user_email")!=null) {
 												CommentDTO commentDTO = (CommentDTO)pageContext.getAttribute("comment");
-												System.out.println("detail.jsp commentDTO : " + commentDTO.toString());
+					
 												if(session.getAttribute("user_email").equals(commentDTO.getComment_id())) {
 										%>
-													<a href="#" class="btn-reply text-uppercase" style="color:blue">reply</a>
+													<a href="javascript:void(0)" class="btn-reply text-uppercase" style="color:blue">reply</a>
 													<!-- comment.comment_num : 댓글의 글 번호 전달 -->
-													<input type="hidden" id="commentNum" name="commentNum" value="<%=commentDTO.getComment_num()%>">
-													<input type="hidden" id="boardNum" name="boardNum" value="<%=commentDTO.getComment_board()%>">
-													<a id="deleteBtn" href="#" class="btn-reply text-uppercase" style="color:red">delete</a>
+													<input type="hidden" id="commentNum" class="commentNum" name="commentNum" value="<%=commentDTO.getComment_num()%>">
+													<input type="hidden" id="boardNum" class="boardNum" name="boardNum" value="<%=commentDTO.getComment_board()%>">
+													<%
+													// System.out.println("detail.jsp 게시글번호 : " + commentDTO.getComment_board());
+													// System.out.println("detail.jsp 댓글번호 : " + commentDTO.getComment_num());
+													%>
+													
+													<!-- <a href="javascript:void(0)" id="deleteBtn" class="btn-reply text-uppercase" style="color:red">delete</a> -->
+													<!-- <a href="javascript:void(0)" class="btn-reply text-uppercase" style="color:red">delete</a> -->
+													<a href="javascript:reDelCheck(${comment.comment_num }, ${comment.comment_board });" class="btn-reply text-uppercase" style="color:red">delete</a>
 										<%		
 												}
 											} else {}
@@ -271,7 +278,7 @@ System.out.println("detail.jsp에서의 userEmail : " + session.getAttribute("us
 									placeholder="Messege" onfocus="this.placeholder = ''"
 									onblur="this.placeholder = 'Messege'" required></textarea>
 						</div>
-						<a href="#" id="cmtCnt-btn" class="button button-postComment button--active" onclick="writeCmt()">Post Comment</a>
+						<a href="javascript:void(0)" id="cmtCnt-btn" class="button button-postComment button--active" onclick="writeCmt()">Post Comment</a>
 						<!-- <button type="submit">댓글 등록</button> -->
 					</form>
 				</div>
@@ -550,8 +557,24 @@ $("#cmtCnt-btn").click(function() {
 	%>
 })
 
-$("#deleteBtn").click(function() {
-	
+<%-- $(".btn-reply").click(function(e) {
+	e.preventDefault();
+	$.ajax({
+		url: "<%=request.getContextPath()%>/reviewboard/deleteComment.board",
+		type:"POST",
+		data: {
+			commentNum : $('.commentNum').val(),
+			boardNum : $('.boardNum').val()
+		},
+		sucess:function() {
+			alert("댓글이 삭제되었습니다.");
+			location.reload();
+		},
+	})
+}) --%>
+
+<%-- $(".comments-area").on('click', ".deleteBtn", function(e) {
+	e.preventDefault();			// url에 # 생기는 것 방지
 	$.ajax({
 		url: "<%=request.getContextPath()%>/reviewboard/deleteComment.board",
 		type:"GET",
@@ -560,11 +583,33 @@ $("#deleteBtn").click(function() {
 			boardNum : $("#boardNum").val()
 		},
 		sucess:function() {
-			alert("댓글이 삭제되었습니다.")
-			location.reload()
+			alert("댓글이 삭제되었습니다.");
+			location.reload();
 		},
 	})
-})
+}) --%>
+
+function reDelCheck(commentIdx, boardIdx) {
+	var query = {commentIdx : commentIdx, boardIdx : boardIdx};
+	var ans = confirm("선택하신 댓글을 삭제하시겠습니까?");
+	if(!ans)
+		return false;
+	
+	$.ajax({
+		url: "<%=request.getContextPath()%>/reviewboard/deleteComment.board",
+		type:"GET",
+		data : query,
+		success:function(data) {
+			alert("댓글이 삭제되었습니다.");
+			location.reload();
+		},
+		error : function(data) {
+			alert("댓글이 삭제되지 않았습니다.");
+		}
+	});
+}
+
+
 </script>
 
 <%@ include file="/inc/bottom.jsp"%>

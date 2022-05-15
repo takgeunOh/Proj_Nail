@@ -1,10 +1,18 @@
 package kr.siat.model;
 
 public class FeedbackDTO {
-	int num, viewcnt;
-	String author, title, content, password, repauthor, repcontent, regidate;
+	int num, viewcnt, answerCheck;			// answerCheck 값이 0이면 답변대기, 1이면 답변처리중, 2면 답변완료
+	String author, title, content, regidate;
 	
 	
+	public int getAnswerCheck() {
+		return answerCheck;
+	}
+
+	public void setAnswerCheck(int answerCheck) {
+		this.answerCheck = answerCheck;
+	}
+
 	public String getRegidate() {
 		return regidate;
 	}
@@ -14,23 +22,20 @@ public class FeedbackDTO {
 	}
 
 	public FeedbackDTO() {
-		this(0, "", "", "", "", "", 0, "", "");
+		this(0, "", "", "", "", 0, 0);
 	}
 	
-	public FeedbackDTO(String author, String title, String content, String password, String repauthor, String repcontent) {
-		this(0, author, title, content, password, "", 0, repauthor, repcontent);
+	public FeedbackDTO(String author, String title, String content) {
+		this(0, author, title, content, "", 0, 0);
 	}
-	public FeedbackDTO(int num, String author, String title, String content, String password, String regidate, int viewcnt,
-			String repauthor, String repcontent) {
+	public FeedbackDTO(int num, String author, String title, String content, String regidate, int viewcnt, int answerCheck) {
 		this.num = num;
 		this.author = author;
 		this.title = title;
 		this.content = content;
-		this.password = password;
 		this.regidate = regidate;
 		this.viewcnt = viewcnt;
-		this.repauthor = repauthor;
-		this.repcontent = repcontent;
+		this.answerCheck = answerCheck;
 	}
 	
 	
@@ -64,24 +69,5 @@ public class FeedbackDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getRepauthor() {
-		return repauthor;
-	}
-	public void setRepauthor(String repauthor) {
-		this.repauthor = repauthor;
-	}
-	public String getRepcontent() {
-		return repcontent;
-	}
-	public void setRepcontent(String repcontent) {
-		this.repcontent = repcontent;
-	}
-	
 	
 }

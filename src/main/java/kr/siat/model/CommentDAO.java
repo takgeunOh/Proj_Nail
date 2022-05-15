@@ -13,7 +13,7 @@ public class CommentDAO {
 
 	final String SQL_SELECT = "select * from board_comment where comment_board=? start with comment_parent=0 connect by prior comment_num=comment_parent";
 	final String SQL_INSERT = "insert into board_comment values (comment_seq.nextval, ?, ?, sysdate, 0, ?)";
-	final String SQL_DELETE = "delete from board_comment where comment_board=? and comment_num=?";
+	final String SQL_DELETE = "delete from board_comment where comment_num=? and comment_board=?";
 	
 	private Connection conn;
 	private Statement stmt;
@@ -73,13 +73,23 @@ public class CommentDAO {
 	}
 	
 	public void deleteComment(int commentNum, int boardNum) {
-		System.out.println("CommentDAO 번호들 : " + commentNum + " " + boardNum);
+		// System.out.println("CommentDAO 번호들 : " + commentNum + " " + boardNum);		// 정상 출력
 		conn = JdbcUtil.getConnection();
 		try {
 			ptmt = conn.prepareStatement(SQL_DELETE);
+			ptmt.setInt(1, commentNum);
+			ptmt.setInt(2, boardNum);
+			
+			int cnt = ptmt.executeUpdate();
+			if(cnt>0)
+				conn.commit();
+			else
+				conn.rollback();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		JdbcUtil.close(conn, ptmt);
 	}
 }

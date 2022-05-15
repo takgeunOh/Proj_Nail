@@ -16,6 +16,10 @@ public class feedbackBoardListServiceImpl implements Service{
 		ArrayList<FeedbackDTO> list = new ArrayList<FeedbackDTO>();
 		list = feedbackDAO.list();
 		
+		for(FeedbackDTO dto : list) {
+			System.out.println("피드백서비스에서의 게시글 번호 확인 : " + dto.getNum());
+		}
+		
 		req.setAttribute("feedbackList", list);
 	}
 	
