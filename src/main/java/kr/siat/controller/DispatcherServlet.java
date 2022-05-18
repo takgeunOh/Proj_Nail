@@ -23,6 +23,7 @@ public class DispatcherServlet extends HttpServlet{
 		int endIndex = reqUri.indexOf(".");
 		
 		String path = reqUri.substring(startIndex, endIndex);
+		System.out.println("디스패처서블릿 path : " + path);
 		String menu = path.substring(0,path.indexOf("/", 1));
 		String function = path.substring(path.indexOf("/",1));
 		

@@ -19,6 +19,12 @@ public class FeedbackAnswerDTO {
 		this.answer = answer;
 	}
 
+	@Override
+	public String toString() {
+		return "FeedbackAnswerDTO [num=" + num + ", boardnum=" + boardnum + ", author=" + author + ", answer=" + answer
+				+ "]";
+	}
+
 	public int getNum() {
 		return num;
 	}

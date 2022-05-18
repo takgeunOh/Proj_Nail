@@ -27,6 +27,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/inc/css/style.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/subscribe.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/inc/css/membership.css">
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/deleteStyle.css">
 
 </head>
 <body>

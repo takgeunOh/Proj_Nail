@@ -2,7 +2,7 @@ package kr.siat.model;
 
 public class FeedbackDTO {
 	int num, viewcnt, answerCheck;			// answerCheck 값이 0이면 답변대기, 1이면 답변처리중, 2면 답변완료
-	String author, title, content, regidate;
+	String author, title, content, regidate, type;
 	
 	
 	public int getAnswerCheck() {
@@ -22,15 +22,16 @@ public class FeedbackDTO {
 	}
 
 	public FeedbackDTO() {
-		this(0, "", "", "", "", 0, 0);
+		this(0, "", "", "", "", "", 0, 0);
 	}
 	
-	public FeedbackDTO(String author, String title, String content) {
-		this(0, author, title, content, "", 0, 0);
+	public FeedbackDTO(String author, String type, String title, String content) {
+		this(0, author, type, title, content, "", 0, 0);
 	}
-	public FeedbackDTO(int num, String author, String title, String content, String regidate, int viewcnt, int answerCheck) {
+	public FeedbackDTO(int num, String author, String type, String title, String content, String regidate, int viewcnt, int answerCheck) {
 		this.num = num;
 		this.author = author;
+		this.type = type;
 		this.title = title;
 		this.content = content;
 		this.regidate = regidate;
@@ -39,6 +40,14 @@ public class FeedbackDTO {
 	}
 	
 	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public int getNum() {
 		return num;
 	}

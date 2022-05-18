@@ -14,6 +14,7 @@ public class reviewBoardListServiceImpl implements Service {
 		ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
 		list = boardDAO.List();
 		
+		System.out.println(list.toString());
 		req.setAttribute("boardList", list);
 	}
 	

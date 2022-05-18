@@ -30,3 +30,5 @@ insert into dramatable values (
 insert into dramatable values (
    dramatable_seq.nextval, '스포츠', '드라마4', '가나다라마바줄거리', '모름', 2010, 5000, '미국','회사', 0, 0, 0
 );
+
+commit

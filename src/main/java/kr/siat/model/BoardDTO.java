@@ -1,109 +1,130 @@
 package kr.siat.model;
 
 public class BoardDTO {
-	int boardNum, boardViewCnt, boardLikeCnt, boardRepRoot, boardRepStep, boardRepIndent;
-	String boardAuthor, boardTitle, boardContent, boardPassword, boardRegidate;
 	
+	int num, viewCnt, likeCnt, repRoot, repStep, repIndent;
+	String userEmail, author, title, content, regidate, videoName;
+	
+	// num, userEmail, author, title, content, regidate, viewcnt, likecnt, reproot, repstep, repindent, videoname 순
 	public BoardDTO() {
-		this(0, "", "", "", "", "", 0, 0, 0, 0, 0);
+		this(0, "", "", "", "", "", 0, 0, 0, 0, 0, "");
 	}
 	
-	public BoardDTO(String boardAuthor, String boardTitle, String boardContent, String boardPassword) {
-		this(0, boardAuthor, boardTitle, boardContent, boardPassword, "", 0, 0, 0, 0, 0);
+	// userEmail, author, title, content, videoName
+	public BoardDTO(String userEmail, String author, String title, String content, String videoName) {
+		this(0, userEmail, author, title, content, "", 0, 0, 0, 0, 0, videoName);
 	}
 	
-	public BoardDTO(int boardNum, String boardAuthor, String boardTitle, String boardContent, String boardPassword, String boardRegidate, int boardViewCnt,
-			int boardLikeCnt, int boardRepRoot, int boardRepStep, int boardRepIndent) {
-		this.boardNum = boardNum;
-		this.boardAuthor = boardAuthor;
-		this.boardTitle = boardTitle;
-		this.boardContent = boardContent;
-		this.boardPassword = boardPassword;
-		this.boardRegidate = boardRegidate;
-		this.boardViewCnt = boardViewCnt;
-		this.boardLikeCnt = boardLikeCnt;
-		this.boardRepRoot = boardRepRoot;
-		this.boardRepStep = boardRepStep;
-		this.boardRepIndent = boardRepIndent;
-	}
-	
-	
-	
-	
-	public String getBoardPassword() {
-		return boardPassword;
+	public BoardDTO(int num ,String userEmail, String author, String title, String content, String regidate,
+			int viewCnt, int likeCnt, int repRoot, int repStep, int repIndent, String videoName) {
+		this.num = num;
+		this.userEmail = userEmail;
+		this.author = author;
+		this.title = title;
+		this.content = content;
+		this.regidate = regidate;
+		this.viewCnt = viewCnt;
+		this.likeCnt = likeCnt;
+		this.repRoot = repRoot;
+		this.repStep = repStep;
+		this.repIndent = repIndent;
+		this.videoName = videoName;
 	}
 
-	public void setBoardPassword(String boardPassword) {
-		this.boardPassword = boardPassword;
+	public int getNum() {
+		return num;
 	}
 
-	public int getBoardNum() {
-		return boardNum;
+	public void setNum(int num) {
+		this.num = num;
 	}
-	public void setBoardNum(int boardNum) {
-		this.boardNum = boardNum;
+
+	public int getViewCnt() {
+		return viewCnt;
 	}
-	public int getBoardViewCnt() {
-		return boardViewCnt;
+
+	public void setViewCnt(int viewCnt) {
+		this.viewCnt = viewCnt;
 	}
-	public void setBoardViewCnt(int boardViewCnt) {
-		this.boardViewCnt = boardViewCnt;
+
+	public int getLikeCnt() {
+		return likeCnt;
 	}
-	public int getBoardLikeCnt() {
-		return boardLikeCnt;
+
+	public void setLikeCnt(int likeCnt) {
+		this.likeCnt = likeCnt;
 	}
-	public void setBoardLikeCnt(int boardLikeCnt) {
-		this.boardLikeCnt = boardLikeCnt;
+
+	public int getRepRoot() {
+		return repRoot;
 	}
-	public int getBoardRepRoot() {
-		return boardRepRoot;
+
+	public void setRepRoot(int repRoot) {
+		this.repRoot = repRoot;
 	}
-	public void setBoardRepRoot(int boardRepRoot) {
-		this.boardRepRoot = boardRepRoot;
+
+	public int getRepStep() {
+		return repStep;
 	}
-	public int getBoardRepStep() {
-		return boardRepStep;
+
+	public void setRepStep(int repStep) {
+		this.repStep = repStep;
 	}
-	public void setBoardRepStep(int boardRepStep) {
-		this.boardRepStep = boardRepStep;
+
+	public int getRepIndent() {
+		return repIndent;
 	}
-	public int getBoardRepIndent() {
-		return boardRepIndent;
+
+	public void setRepIndent(int repIndent) {
+		this.repIndent = repIndent;
 	}
-	public void setBoardRepIndent(int boardRepIndent) {
-		this.boardRepIndent = boardRepIndent;
+
+	public String getUserEmail() {
+		return userEmail;
 	}
-	public String getBoardAuthor() {
-		return boardAuthor;
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
-	public void setBoardAuthor(String boardAuthor) {
-		this.boardAuthor = boardAuthor;
+
+	public String getAuthor() {
+		return author;
 	}
-	public String getBoardTitle() {
-		return boardTitle;
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
-	public void setBoardTitle(String boardTitle) {
-		this.boardTitle = boardTitle;
+
+	public String getTitle() {
+		return title;
 	}
-	public String getBoardContent() {
-		return boardContent;
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public void setBoardContent(String boardContent) {
-		this.boardContent = boardContent;
+
+	public String getContent() {
+		return content;
 	}
-	public String getBoardRegidate() {
-		return boardRegidate;
+
+	public void setContent(String content) {
+		this.content = content;
 	}
-	public void setBoardRegidate(String boardRegidate) {
-		this.boardRegidate = boardRegidate;
+
+	public String getRegidate() {
+		return regidate;
 	}
-	@Override
-	public String toString() {
-		return "BoardDTO [boardNum=" + boardNum + ", boardViewCnt=" + boardViewCnt + ", boardLikeCnt=" + boardLikeCnt
-				+ ", boardRepRoot=" + boardRepRoot + ", boardRepStep=" + boardRepStep + ", boardRepIndent="
-				+ boardRepIndent + ", boardAuthor=" + boardAuthor + ", boardTitle=" + boardTitle + ", boardContent="
-				+ boardContent + ", boardRegidate=" + boardRegidate + "]";
+
+	public void setRegidate(String regidate) {
+		this.regidate = regidate;
+	}
+
+	public String getVideoName() {
+		return videoName;
+	}
+
+	public void setVideoName(String videoName) {
+		this.videoName = videoName;
 	}
 	
 	

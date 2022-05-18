@@ -23,6 +23,7 @@
 				<li>Approve Reviews</li>
 			</ul>
 			<button class="pricingTable-firstTable_table__getstart" >Get Started Now</button>
+			<%-- <a href="javascript:moveToPayments(<%=0 %>, ${comment.comment_board });" class="btn-reply text-uppercase" style="color:red">delete</a> --%>
 		</li>
 		
 		<li class="pricingTable-firstTable_table">

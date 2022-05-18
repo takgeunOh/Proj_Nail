@@ -1,5 +1,7 @@
 package kr.siat.boardservice;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,10 +20,18 @@ public class ReviewBoardInsertCommentServiceImpl implements Service {
 			return null;
 		} else if ("POST".equals(req.getMethod())) {
 			
+			try {
+				req.setCharacterEncoding("UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			resp.setCharacterEncoding("UTF-8");
+			resp.setContentType("text/html; charset=UTF-8");
+			
 			// System.out.println("리뷰게시판 댓글서비스 POST 방식 진입");
 			// System.out.println("리뷰게시판 댓글서비스 content 넘어왔는지 확인 >> " + req.getParameter("content"));		// 정상 출력 확인완료
-			System.out.printf("리뷰댓글서비스 데이터 넘어왔는지 확인 >> %s %s %s\n", req.getParameter("boardNum"), req.getParameter("userEmail"),
-					req.getParameter("content"));
+			System.out.printf("리뷰댓글서비스 데이터 넘어왔는지 확인 >> %s %s %s\n", req.getParameter("boardNum"), req.getParameter("userEmail"), req.getParameter("content"));
 			
 			int boardNum = Integer.parseInt(req.getParameter("boardNum"));
 			String userEmail = req.getParameter("userEmail");

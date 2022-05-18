@@ -5,7 +5,7 @@ create table member (
 	userPhone varchar2(30) not null,
 	userPassword varchar2(70) not null,
 	userRegidate date default sysdate not null,
-	userAdminWhether number not null
+	usertype number not null
 );
 
 create sequence member_seq;

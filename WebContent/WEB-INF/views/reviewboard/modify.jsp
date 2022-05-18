@@ -55,12 +55,12 @@ System.out.println("modify.jsp num : " + num);
 								<a href="#">Politics,</a> <a href="#">Lifestyle</a>
 							</div>
 							<ul class="blog_meta list">
-								<li><a href="#"><%=dto.getBoardAuthor() %> <i class="lnr lnr-user"></i>
+								<li><a href="#"><%=dto.getAuthor() %> <i class="lnr lnr-user"></i>
 								</a></li>
-								<li><a href="#"><%=dto.getBoardRegidate() %> <i
+								<li><a href="#"><%=dto.getRegidate() %> <i
 										class="lnr lnr-calendar-full"></i>
 								</a></li>
-								<li><a href="#"><%=dto.getBoardViewCnt() %> <i class="lnr lnr-eye"></i>
+								<li><a href="#"><%=dto.getViewCnt() %> <i class="lnr lnr-eye"></i>
 								</a></li>
 								<li><a href="#">06 Comments <i class="lnr lnr-bubble"></i>
 								</a></li>
@@ -82,19 +82,19 @@ System.out.println("modify.jsp num : " + num);
 					
 					<div class="col-lg-9 col-md-9 blog_details">
 						<form action="modify.board" method="POST">
-							<input type="hidden" name="modifyNum" value="<%=dto.getBoardNum() %>"/>
+							<input type="hidden" name="modifyNum" value="<%=dto.getNum() %>"/>
 							<div class="form-group">
 								<label>글 제목</label>
-								<input type="text" name="modifyTitle" value="<%=dto.getBoardTitle() %>"/>
+								<input type="text" name="modifyTitle" value="<%=dto.getTitle() %>"/>
 							</div>
 							<div class="form-group">
 								<label>글 내용</label>
-								<textarea rows="10" cols="50" name="modifyContent" ><%=dto.getBoardContent() %></textarea>
+								<textarea rows="10" cols="50" name="modifyContent" ><%=dto.getContent() %></textarea>
 							</div>
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label>패스워드</label>
 								<input type="password" name="modifyPassword" value=""/>
-							</div>
+							</div> -->
 							<%-- <input type="text" name="modifyTitle" value="<%=dto.getBoardTitle() %>"> --%>
 							<%-- <p class="excert"><textarea rows="10" cols="50" name="modifyContent" ><%=dto.getBoardContent() %></textarea></p> --%>
 							<input type="submit" value="수정하기" />

@@ -13,7 +13,7 @@ BoardDTO dto = new BoardDTO();
 if("GET".equals(request.getMethod())) {
 	dto = (BoardDTO) request.getAttribute("boarddetail");
 
-	session.setAttribute("detailSessionNum", dto.getBoardNum());
+	session.setAttribute("detailSessionNum", dto.getNum());
 } else if("POST".equals(request.getMethod())) {
 	dto = (BoardDTO) request.getAttribute("boardaftermodify");
 }
@@ -64,12 +64,12 @@ System.out.println("detail.jsp에서의 userEmail : " + session.getAttribute("us
 								<a href="#">Politics,</a> <a href="#">Lifestyle</a>
 							</div>
 							<ul class="blog_meta list">
-								<li><a href="#"><%=dto.getBoardAuthor() %> <i class="lnr lnr-user"></i>
+								<li><a href="#"><%=dto.getAuthor() %> <i class="lnr lnr-user"></i>
 								</a></li>
-								<li><a href="#"><%=dto.getBoardRegidate() %> <i
+								<li><a href="#"><%=dto.getRegidate() %> <i
 										class="lnr lnr-calendar-full"></i>
 								</a></li>
-								<li><a href="#"><%=dto.getBoardViewCnt() %> <i class="lnr lnr-eye"></i>
+								<li><a href="#"><%=dto.getViewCnt() %> <i class="lnr lnr-eye"></i>
 								</a></li>
 								<li><a href="#">${fn:length(boardCommentList) } Comments<i class="lnr lnr-bubble"></i>
 								</a></li>
@@ -87,8 +87,8 @@ System.out.println("detail.jsp에서의 userEmail : " + session.getAttribute("us
 						</div>
 					</div>
 					<div class="col-lg-9 col-md-9 blog_details">
-						<h2><%=dto.getBoardTitle() %></h2>
-						<p class="excert"><%=dto.getBoardContent() %></p>					<!-- 서브타이틀 정도로 쓰기 -->
+						<h2><%=dto.getTitle() %></h2>
+						<p class="excert"><%=dto.getContent() %></p>					<!-- 서브타이틀 정도로 쓰기 -->
 					</div>
 					<div class="col-lg-12">													<!-- 여기서부터는 콘텐츠 -->
 						<%-- <div class="quotes">MCSE boot camps have its supporters and
@@ -271,7 +271,7 @@ System.out.println("detail.jsp에서의 userEmail : " + session.getAttribute("us
 					%> --%>
 					
 					<form id="writeCommentForm">
-						<input type="hidden" id="boardNum" name="comment_board" value="<%=dto.getBoardNum()%>">
+						<input type="hidden" id="boardNum" name="comment_board" value="<%=dto.getNum()%>">
 						<input type="hidden" id="userEmail" name="comment_id" value="<%=session.getAttribute("user_email") %>">
 						<div class="form-group">
 								<textarea id="cmtCnt" class="form-control mb-10" rows="5" name="comment_content"
@@ -299,10 +299,20 @@ System.out.println("detail.jsp에서의 userEmail : " + session.getAttribute("us
 						<div class="br"></div>
 					</aside>
 					<aside class="single_sidebar_widget author_widget">
-						<a class="btn btn-warning" href="modify.board?num=<%=dto.getBoardNum() %>&password=<%=dto.getBoardPassword() %>" role="button">수정</a>
-						<%-- <a class="btn btn-danger" href="delete.board?num=<%=dto.getBoardNum() %>&password=<%=dto.getBoardPassword() %>" role="button">삭제</a> --%>
-						<a class="btn btn-danger" href="#" data-toggle="modal" data-target="#moaModal">삭제</a>
-						<div class="br"></div>
+					<%
+						if(session.getAttribute("user_email")==null) {
+							
+						} else {
+							if(session.getAttribute("user_email").equals(dto.getUserEmail()) || (Integer)session.getAttribute("user_type")==0) {
+							%>
+								<a class="btn btn-warning" href="modify.board?num=<%=dto.getNum() %>" role="button">수정</a>
+								<%-- <a class="btn btn-danger" href="delete.board?num=<%=dto.getBoardNum() %>&password=<%=dto.getBoardPassword() %>" role="button">삭제</a> --%>
+								<a class="btn btn-danger" href="#" data-toggle="modal" data-target="#moaModal">삭제</a>
+								<div class="br"></div>
+							<%
+							}
+						}
+					%>
 					</aside>
 					<aside class="single_sidebar_widget popular_post_widget">
 						<h3 class="widget_title">Popular Posts</h3>
@@ -443,7 +453,7 @@ System.out.println("detail.jsp에서의 userEmail : " + session.getAttribute("us
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">비밀번호 확인</h5>
+        <h5 class="modal-title" id="exampleModalLabel">삭제 재확인</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -451,9 +461,11 @@ System.out.println("detail.jsp에서의 userEmail : " + session.getAttribute("us
       <div class="modal-body">
         <form action="delete.board" method="post">
           <div class="form-group">
-          	<input type="hidden" name="deleteNum" value="<%=dto.getBoardNum() %>" />
-            <label for="recipient-name" class="col-form-label">비밀번호 입력 : </label>
-            <input type="text" class="form-control" name="deletePassword" id="recipient-name">
+          	<input type="hidden" name="deleteNum" value="<%=dto.getNum() %>" />
+          	<p>정말로 삭제하시겠습니까?</p>
+          	<p>삭제를 원하시면 <span style="color:red;">본인의 이메일</span>을 입력해주세요.</p>
+            <label for="recipient-name" class="col-form-label">이메일 입력 : </label>
+            <input type="text" class="form-control" name="deleteEmail" id="recipient-name">
           </div>
           <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
@@ -534,8 +546,11 @@ $("#cmtCnt-btn").click(function() {
 	<%
 	if(session.getAttribute("user_email")==null) {
 	%>
-		alert("로그인이 필요합니다.");
-		location.href="<%=request.getContextPath() %>/member/login.member";
+		if(confirm("로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?")==true) {
+			location.href="<%=request.getContextPath() %>/member/login.member";
+		} else {
+			return false;
+		}
 	<%
 	} else {
 	%>

@@ -51,24 +51,34 @@ list = (ArrayList<FeedbackDTO>) request.getAttribute("feedbackList");
 						<thead>
 							<tr>
 								<th>번호</th>
+								<th>문의유형</th>
 								<th>제목</th>
 								<th>작성자</th>
 								<th>작성일</th>
 								<th>조회수</th>
 								<th>답변상태</th>
+								<%
+								if(session.getAttribute("user_email")!=null && (Integer)session.getAttribute("user_type")==0) {
+									// 로그인한 사람이 관리자라면 관리컬럼 보이도록 할 것.
+								%>
+								<th>관리</th>
+								<%
+								}
+								%>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach var="feedback" items="${feedbackList }">
 								<tr>
 									<th scope="row">${feedback.num }</th>
+									<td>${feedback.type }</td>
 									<td><a href="detail.board?num=${feedback.num }">${feedback.title }</a></td>
 									<td>${feedback.author }</td>
 									<td>${feedback.regidate }</td>
 									<td>${feedback.viewcnt }</td>
 									<%
 									FeedbackDTO dto = (FeedbackDTO)pageContext.getAttribute("feedback");
-									// System.out.println("문의게시판 리스트 번호 : " + dto.getNum());			// 정상 출력
+									System.out.println("문의게시판 리스트 번호 : " + dto.getNum());			// 정상 출력
 									if(dto.getAnswerCheck()==1) {
 									%>
 									<td><a href="javascript:changeProcess(${feedback.num }, <%=session.getAttribute("user_type") %>)" class="btn btn-danger">답변 대기</a></td>
@@ -85,12 +95,26 @@ list = (ArrayList<FeedbackDTO>) request.getAttribute("feedbackList");
 									<%
 									}
 									%>
+									<%
+									if(session.getAttribute("user_email")!=null && (Integer)session.getAttribute("user_type")==0) {
+									%>
+										<td>
+								      	<button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="delete_click('<%=dto.getNum()%>');">
+						            		<span aria-hidden="true"><i class="fa fa-close"></i></span>
+						          		</button>
+						        		</td>
+						        	<%
+									}
+									%>
 								</tr>
 
 							</c:forEach>
 						</tbody>
 					</table>
 				</div>
+			</div>
+			<div style="display:flex; justify-content:flex-end;">
+				<a id="writeBtn" class="btn btn-primary" href="javascript:void(0)" role="button" >문의글 작성하기</a>
 			</div>
 		</div>
 	</div>
@@ -136,6 +160,43 @@ function changeProcess(feedbackIdx, userType) {
 	}
 	%>
 }
+
+$("#writeBtn").click(function() {
+	<%
+	if(session.getAttribute("user_email")==null) {
+	%>
+		if(confirm("로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?")==true) {
+			location.href="<%=request.getContextPath() %>/member/login.member";
+		} else {
+			return false;
+		}
+	<%
+	} else {
+	%>
+		location.href="<%=request.getContextPath() %>/feedbackboard/insertFeedback.board?email=" + sessionStorage.getItem("user_email");
+	<%
+	}
+	%>
+})
+
+function delete_click(feedbackIdx) {
+	// console.log("삭제문의글 번호 : " + feedbackIdx);			// 정상 출력
+	var query = {idx : feedbackIdx};
+	var ans = confirm("선택하신 문의글을 삭제하시겠습니까?");
+	if(!ans)
+		return false;
+	
+	$.ajax({
+		url : "<%=request.getContextPath()%>/feedbackboard/feedbackBoardDelete.board",
+		type:"GET",
+		data : query,
+		success:function(data) {
+			alert("문의글 삭제가 완료되었습니다.");
+			location.reload();
+		},
+	});
+}
+
 </script>
 
 
