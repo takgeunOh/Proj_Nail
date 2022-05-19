@@ -30,6 +30,7 @@
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/deleteStyle.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart.css">
 
 </head>
 <body>
@@ -54,33 +55,21 @@
                         href="index.jsp">Home</a></li>
                      <li class="nav-item submenu dropdown"><a href="#"
                         class="nav-link dropdown-toggle" data-toggle="dropdown"
-                        role="button" aria-haspopup="true" aria-expanded="false">영화</a>
+                        role="button" aria-haspopup="true" aria-expanded="false" >영화</a>
                         <ul class="dropdown-menu">
                            <li class="nav-item"><a class="nav-link"
-                              href="<%=request.getContextPath()%>/movie/category.movie">영화 목록</a></li>
-                           <li class="nav-item"><a class="nav-link"
-                              href="<%=request.getContextPath()%>/movie/detail.movie">영화 상세보기</a></li>
-                           <li class="nav-item"><a class="nav-link"
-                              href="checkout.html">Product Checkout</a></li>
-                           <li class="nav-item"><a class="nav-link"
-                              href="confirmation.html">Confirmation</a></li>
-                           <li class="nav-item"><a class="nav-link" href="cart/cart.cart">Shopping Cart</a></li>
+                              href="<%=request.getContextPath()%>/movie/category.movie">영화 목록</a></li>                                        
+                           <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/movie/cart.cart">Shopping Cart</a></li>
                         </ul>
-                     </li>
-                     
+                    	</li>
                         <li class="nav-item submenu dropdown"><a href="#"
                         class="nav-link dropdown-toggle" data-toggle="dropdown"
                         role="button" aria-haspopup="true" aria-expanded="false">드라마</a>
                         <ul class="dropdown-menu">
                            <li class="nav-item"><a class="nav-link"
                               href="<%=request.getContextPath()%>/drama/category.drama">드라마 목록</a></li>
-                           <li class="nav-item"><a class="nav-link"
-                              href="<%=request.getContextPath()%>/drama/detail.drama">드라마 상세보기</a></li>
-                           <li class="nav-item"><a class="nav-link"
-                              href="checkout.html">Product Checkout</a></li>
-                           <li class="nav-item"><a class="nav-link"
-                              href="confirmation.html">Confirmation</a></li>
-                           <li class="nav-item"><a class="nav-link" href="cart/cart.cart">Shopping Cart</a></li>
+                          
+                           <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/drama/cart.cart">Shopping Cart</a></li>
                         </ul>
                      </li>
                      
@@ -107,12 +96,15 @@
 						</ul>
 
 						<ul class="nav-shop">
-							<li class="nav-item"><button>
-									<i class="ti-search"></i>
-								</button></li>
-							<li class="nav-item"><button>
-									<i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span>
-								</button></li>
+							<!-- <li class="nav-item">
+								<button><i class="ti-search"></i></button>
+							</li> -->
+							<li class="nav-item">
+								<button onclick="location.href='<%=request.getContextPath()%>/cart/cartInfo.cart'">
+									<i class="ti-shopping-cart"></i>
+									<span class="nav-shop__circle">3</span>
+								</button>
+							</li>
 							
 							<%
 							if(session.getAttribute("user_email")==null) {
