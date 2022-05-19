@@ -2,32 +2,36 @@ package kr.siat.model;
 
 public class dramaDTO {
 
-	private int dramaNum; //��ȣ
-	private String dramaGenre; //�帣
-	private String dramaTitle;  //����
-	private String dramaContent;  //�ٰŸ�
-	private String dramaDirector;  //����
-	private int dramaYear;  //��������
-	private int dramaPrice;  //����
-	private String dramaCountry; //���� ����
-	private String dramaCompany; //��޻�
-	private int dramaLikeCnt; //���ƿ� ����
-	private int dramaHide;  //���迩��
-	private int dramaAge; // ��������
+	private int dramaNum; //占쏙옙호
+	private String dramaGenre; //占썲르
+	private String dramaTitle;  //占쏙옙占쏙옙
+	private String dramaContent;  //占쌕거몌옙
+	private String dramaDirector;  //占쏙옙占쏙옙
+	private String dramaYear;  //占쏙옙占쏙옙占쏙옙占쏙옙
+	private int dramaPrice;  //占쏙옙占쏙옙
+	private String dramaCountry; //占쏙옙占쏙옙 占쏙옙占쏙옙
+	private String dramaCompany; //占쏙옙憑占�
+	private int dramaLikeCnt; //占쏙옙占싣울옙 占쏙옙占쏙옙
+	private int dramaHide;  //占쏙옙占썼여占쏙옙
+	private int dramaAge; // 占쏙옙占쏙옙占쏙옙占쏙옙
 	
 	
 	
 	public dramaDTO() {
-		this(0, "", "", "", "", 0, 0,"","", 0, 0, 0);
+		  this(0, "", "", "", "", "", 0,"","", 0, 0, 0);
 	}
 	
-	
+	 public dramaDTO(String genre, String title, String content, String director, String year, int price,
+	         String country, String company, int hide, int age) {
+	      this(0, genre, title, content, director, year, price, country, company, 0, hide, age);
+	      
+	   }
 	
 	
 	public dramaDTO(int dramaNum, String dramaGenre, String dramaTitle, String dramaContent, String dramaDirector,
-			int dramaYear, int dramaPrice, String dramaCountry, String dramaCompany, int dramaLikeCnt, int dramaHide,
+			String dramaYear, int dramaPrice, String dramaCountry, String dramaCompany, int dramaLikeCnt, int dramaHide,
 			int dramaAge) {
-		super();
+		
 	
 		this.dramaNum = dramaNum;
 		this.dramaGenre = dramaGenre;
@@ -43,6 +47,10 @@ public class dramaDTO {
 		this.dramaAge = dramaAge;
 		
 	}
+	
+	
+	
+	
 	
 	
 	public int getDramaNum() {
@@ -75,10 +83,10 @@ public class dramaDTO {
 	public void setDramaDirector(String dramaDirector) {
 		this.dramaDirector = dramaDirector;
 	}
-	public int getDramaYear() {
+	public String getDramaYear() {
 		return dramaYear;
 	}
-	public void setDramaYear(int dramaYear) {
+	public void setDramaYear(String dramaYear) {
 		this.dramaYear = dramaYear;
 	}
 	public int getDramaPrice() {

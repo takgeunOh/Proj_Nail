@@ -1,10 +1,10 @@
-<%@page import="kr.siat.model.dramaDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ include file="/inc/top.jsp"%>
     <%@page import="java.util.ArrayList"%>
 
+    <%@page import="kr.siat.model.dramaDTO"%>
     
        <%
 dramaDTO dto = new dramaDTO();
@@ -21,7 +21,7 @@ dramaDTO dto = new dramaDTO();
     
 
 <!-- ================ start banner area ================= -->	
-	<section class="blog-banner-area" id="category">
+
 		<div class="container h-100">
 			<div class="blog-banner">
 				<div class="text-center">
@@ -31,22 +31,36 @@ dramaDTO dto = new dramaDTO();
                       
             </ol>
           </nav>         
-          <p>test watch test rama</p>  
+              
   
 		</div>
  <!-- 여기에 영화 상세 정보? -->
   				<div class="text-center">
   				 <h2>${drama.movieTitle}</h2>
-   			<div class="col-lg-9 col-md-9 drama_details"  > 
+   		
 						<h2><%=dto.getDramaTitle() %></h2>
 									<!-- 서브타이틀 정도로 쓰기 -->
-					</div>
+				</div>	
+					<div class="text-center">
+	<div class="jb-box">
+      
+  	<iframe width="100%" height="100%" src="https://www.youtube.com/embed/XUhRA_ObaDo" 
+		title="YouTube video player" frameborder="0" 
+		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+	</iframe>
+     
+      <div class="jb-text">
+      
+      </div>
+    </div>
+				
+						<p>　</p>
+						<a class="button button-blog" >다운로드</a>
+						 <p>　</p>
+   </div>	
    
- <a class="button button-blog" >다운로드</a>
    
-   
-   
-  </div>
+  
    
    
    
@@ -57,7 +71,7 @@ dramaDTO dto = new dramaDTO();
     
     
  
-	</section>
+
 	<!-- ================ end banner area ================= -->
 	
 	

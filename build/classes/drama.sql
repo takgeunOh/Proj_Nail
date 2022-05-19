@@ -2,14 +2,14 @@ drop table dramatable;
 
 create table dramatable(
 dramaNum Number Not NUll,
-dramaGenre varchar(20) Not NUll,
-dramaTitle varchar(30) Not NUll,
+dramaGenre varchar(500) Not NUll,
+dramaTitle varchar(100) Not NUll,
 dramaContent varchar(500) Not NUll,
-dramaDirector varchar(20) Not NUll,
-dramaYear number Not NUll,
-dramaPrice varchar(10) Not NUll,
-dramaCountry varchar(10) Not NUll,
-dramaCompany varchar(20) Not NUll,
+dramaDirector varchar(40) Not NUll,
+dramaYear varchar(20),
+dramaPrice number Not NUll,
+dramaCountry varchar(50) Not NUll,
+dramaCompany varchar(50) Not NUll,
 dramaLikeCnt number Not NUll,
 dramaHide number Not NUll,
 dramaAge number Not NUll
@@ -30,5 +30,4 @@ insert into dramatable values (
 insert into dramatable values (
    dramatable_seq.nextval, '스포츠', '드라마4', '가나다라마바줄거리', '모름', 2010, 5000, '미국','회사', 0, 0, 0
 );
-
 commit
