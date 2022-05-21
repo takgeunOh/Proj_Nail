@@ -29,11 +29,10 @@ System.out.println("detail.jsp에서의 userEmail : " + session.getAttribute("us
 	<div class="container h-100">
 		<div class="blog-banner">
 			<div class="text-center">
-				<h1>Board Details</h1>
+				<h1>리뷰 상세보기</h1>
 				<nav aria-label="breadcrumb" class="banner-breadcrumb">
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="#">MOVIE</a></li>
-						<li class="breadcrumb-item active" aria-current="page">DRAMA</li>
+						<li class="breadcrumb-item"><a href="#">영화를 먼저 관람하신 회원님의 리뷰를 보실 수 있습니다.</a></li>
 					</ol>
 				</nav>
 			</div>
@@ -87,7 +86,9 @@ System.out.println("detail.jsp에서의 userEmail : " + session.getAttribute("us
 						</div>
 					</div>
 					<div class="col-lg-9 col-md-9 blog_details">
+						
 						<h2><%=dto.getTitle() %></h2>
+						<hr />
 						<p class="excert"><%=dto.getContent() %></p>					<!-- 서브타이틀 정도로 쓰기 -->
 					</div>
 					<div class="col-lg-12">													<!-- 여기서부터는 콘텐츠 -->
@@ -285,7 +286,7 @@ System.out.println("detail.jsp에서의 userEmail : " + session.getAttribute("us
 			</div>
 			<div class="col-lg-4">
 				<div class="blog_right_sidebar">
-					<aside class="single_sidebar_widget search_widget">
+					<!-- <aside class="single_sidebar_widget search_widget">
 						<div class="input-group">
 							<input type="text" class="form-control"
 								placeholder="Search Posts"> <span
@@ -295,9 +296,10 @@ System.out.println("detail.jsp에서의 userEmail : " + session.getAttribute("us
 								</button>
 							</span>
 						</div>
-						<!-- /input-group -->
+						/input-group
 						<div class="br"></div>
 					</aside>
+					-->
 					<aside class="single_sidebar_widget author_widget">
 					<%
 						if(session.getAttribute("user_email")==null) {
@@ -315,7 +317,7 @@ System.out.println("detail.jsp에서의 userEmail : " + session.getAttribute("us
 					%>
 					</aside>
 					<aside class="single_sidebar_widget popular_post_widget">
-						<h3 class="widget_title">Popular Posts</h3>
+						<%-- <h3 class="widget_title">Popular Posts</h3>
 						<div class="media post_item">
 							<img
 								src="${pageContext.request.contextPath }/inc/img/blog/popular-post/post1.jpg"
@@ -360,17 +362,17 @@ System.out.println("detail.jsp에서의 userEmail : " + session.getAttribute("us
 								<p>01 Hours ago</p>
 							</div>
 						</div>
-						<div class="br"></div>
+						<div class="br"></div> --%>
 					</aside>
-					<aside class="single_sidebar_widget ads_widget">
+					<%-- <aside class="single_sidebar_widget ads_widget">
 						<a href="#"> <img class="img-fluid"
 							src="${pageContext.request.contextPath }/inc/img/blog/add.jpg"
 							alt="">
 						</a>
 						<div class="br"></div>
-					</aside>
+					</aside> --%>
 					<aside class="single_sidebar_widget post_category_widget">
-						<h4 class="widget_title">Post Catgories</h4>
+						<h4 class="widget_title">인기 리뷰평</h4>
 						<ul class="list cat-list">
 							<li><a href="#" class="d-flex justify-content-between">
 									<p>Technology</p>

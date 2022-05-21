@@ -55,10 +55,10 @@
 					<label for="exampleFormControlSelect1">리뷰할 영상 제목</label><br> 
 					<select name="videoName" class="form-control" id="exampleFormControlSelect1">
 						<option>어벤져스 : 엔드게임</option>
-						<option>어벤져스 : 엔드게임</option>
-						<option>어벤져스 : 엔드게임</option>
-						<option>어벤져스 : 엔드게임</option>
-						<option>어벤져스 : 엔드게임</option>
+						<option>범죄도시 2</option>
+						<option>배드 가이즈</option>
+						<option>그대가 조국</option>
+						<option>여자의 노래</option>
 					</select>
 				</div><br><br>
 				<div class="form-group">

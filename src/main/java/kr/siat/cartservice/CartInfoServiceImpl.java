@@ -6,16 +6,15 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.siat.boardservice.Service;
 import kr.siat.controller.ModelAndView;
-import kr.siat.model.CartDTO;
+import kr.siat.model.MovieCartDTO;
 import kr.siat.model.MovieDTO;
 
 public class CartInfoServiceImpl implements Service {
 
 	
 	private void doGet(HttpServletRequest req, HttpServletResponse resp) {
-		List<CartDTO> list = cartDAO.getList();
+		List<MovieCartDTO> list = movieCartDAO.getList();
 		
 		req.setAttribute("cartList", list);
 

@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.siat.controller.ModelAndView;
 import kr.siat.model.BoardDAO;
-import kr.siat.model.CartDAO;
+import kr.siat.model.MovieCartDAO;
 import kr.siat.model.CommentDAO;
 import kr.siat.model.FeedbackAnswerDAO;
 import kr.siat.model.FeedbackDAO;
@@ -15,7 +15,7 @@ import kr.siat.model.dramaDAO;
 
 
 public interface Controller {
-	CartDAO cartDAO = new CartDAO();
+	MovieCartDAO movieCartDAO = new MovieCartDAO();
 	FeedbackAnswerDAO feedbackAnswerDAO = new FeedbackAnswerDAO();
 	CommentDAO commentDAO = new CommentDAO();
 	MemberDAO memberDAO = new MemberDAO();

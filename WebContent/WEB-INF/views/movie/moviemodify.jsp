@@ -6,7 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-	ArrayList<MovieDTO> list = new ArrayList<MovieDTO>();
+ArrayList<MovieDTO> list = new ArrayList<MovieDTO>();
 list = (ArrayList<MovieDTO>) request.getAttribute("movieList");
 
 MovieDTO dto = new MovieDTO();

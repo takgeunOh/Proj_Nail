@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.siat.controller.ModelAndView;
 import kr.siat.memberservice.memberLoginServiceImpl;
 import kr.siat.memberservice.memberRegisterServiceImpl;
+import kr.siat.priceinfoservice.membershipCheckoutServiceImpl;
 import kr.siat.priceinfoservice.membershipInfoServiceImpl;
 
 public class priceInfoController implements Controller {
@@ -15,6 +16,8 @@ public class priceInfoController implements Controller {
 		
 		if(req.getAttribute("service").equals("/membershipInfo"))
 			return new membershipInfoServiceImpl().request(req, resp);
+		else if(req.getAttribute("service").equals("/checkout"))
+			return new membershipCheckoutServiceImpl().request(req, resp);
 		/*
 		 * else if(req.getAttribute("service").equals("/downloadInfo")) return new
 		 * memberLoginServiceImpl().request(req, resp);
