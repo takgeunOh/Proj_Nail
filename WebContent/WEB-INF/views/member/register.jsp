@@ -6,15 +6,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- ================ start banner area ================= -->
-<section class="blog-banner-area" id="category">
+<section class="blog-banner-area" id="category" style="height:40vh;">
 	<div class="container h-100">
 		<div class="blog-banner">
 			<div class="text-center">
-				<h1>Register</h1>
+				<h1>회원가입</h1>
 				<nav aria-label="breadcrumb" class="banner-breadcrumb">
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="#">Login</a></li>
-						<li class="breadcrumb-item active" aria-current="page">Register</li>
+						<li class="breadcrumb-item"><a href="#">회원가입을 통해 더 많은 혜택을 누리세요.</a></li>
+						<!-- <li class="breadcrumb-item active" aria-current="page">Register</li> -->
 					</ol>
 				</nav>
 			</div>
@@ -30,18 +30,16 @@
 			<div class="col-lg-6">
 				<div class="login_box_img">
 					<div class="hover">
-						<h4>Already have an account?</h4>
-						<p>There are advances being made in science and technology
-							everyday, and a good example of this is the</p>
+						<h4>이미 계정이 있으십니까?</h4>
+						<p>이미 계정이 있으시다면 아래 버튼을 클릭하여 로그인 후 서비스를 이용해주세요.</p>
 						<a class="button button-account"
-							href="<%=request.getContextPath()%>/member/login.member">Login
-							Now</a>
+							href="<%=request.getContextPath()%>/member/login.member">로그인하기</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-6">
 				<div class="login_form_inner register_form_inner">
-					<h3>Create an account</h3>
+					<h3>회원가입</h3>
 					<form action="register.member" name=search class="row login_form"
 						id="register_form" method="post">
 						<div class="col-md-12 form-group">
@@ -85,15 +83,14 @@
 								name="userType" value="1"><label
 								class="form-check-label" for="inlineRadio1">일반회원</label> <input
 								type="radio" class="form-check-input" id="userType"
-								name="userType" value="2" disabled><label
-								class="form-check-label" for="inlineRadio1">기업회원
-								(disabled)</label>
+								name="userType" value="2"><label
+								class="form-check-label" for="inlineRadio1">구독회원</label>
 						</div>
 						<div class="col-md-12 form-group">
-							<div class="creat_account">
+							<!-- <div class="creat_account">
 								<input type="checkbox" id="f-option2" name="selector"> <label
 									for="f-option2">Keep me logged in</label>
-							</div>
+							</div> -->
 						</div>
 						<div class="col-md-12 form-group">
 							<button type="submit" class="button button-register w-100"

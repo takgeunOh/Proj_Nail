@@ -10,8 +10,12 @@ public class ReviewBoardDeleteCommentServiceImpl implements Service {
 	@Override
 	public ModelAndView request(HttpServletRequest req, HttpServletResponse resp) {
 		
-		int commentNum = (Integer.parseInt(req.getParameter("commentNum")));
-		int boardNum = (Integer.parseInt(req.getParameter("boardNum")));
+		// System.out.println(req.getParameter("idx1"));				// 정상 출력
+		// System.out.println(req.getParameter("idx2"));				// 정상 출력
+		
+		int commentNum = (Integer.parseInt(req.getParameter("commentIdx")));
+		int boardNum = (Integer.parseInt(req.getParameter("boardIdx")));
+		
 		commentDAO.deleteComment(commentNum, boardNum);
 		
 		return null;

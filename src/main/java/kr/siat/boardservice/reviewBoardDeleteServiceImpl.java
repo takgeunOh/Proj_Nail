@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.siat.controller.ModelAndView;
 
@@ -19,7 +20,7 @@ public class reviewBoardDeleteServiceImpl implements Service {
 	
 	@Override
 	public ModelAndView request(HttpServletRequest req, HttpServletResponse resp) {
-		
+		HttpSession session = req.getSession();
 		System.out.println("boardDeleteServiceImpl 진입방식 : " + req.getMethod());
 		
 		if("GET".equals(req.getMethod())) {
@@ -27,33 +28,21 @@ public class reviewBoardDeleteServiceImpl implements Service {
 			return null;
 		}
 		else if("POST".equals(req.getMethod())) {
-			String deleteNum = req.getParameter("deleteNum");
-			String password = boardDAO.selectbyBoardNum(deleteNum).getBoardPassword();
+			// String deleteNum = req.getParameter("deleteNum");
+			String deleteEmail = req.getParameter("deleteEmail");
 			
-			if(password.equals(req.getParameter("deletePassword"))) {
+			if(deleteEmail.equals(session.getAttribute("user_email"))) {
 				doPost(req, resp);
 				
 				req.setAttribute("msg", "삭제가 완료되었습니다.");
 				return new ModelAndView("reviewboard/passCheck", false);
 			} else {
-				resp.setContentType("text/html; charset=utf-8");
-				PrintWriter out;
-				try {
-					out = resp.getWriter();
-					out.println("<script>");
-			   		out.println("alert('비밀번호가 일치하지 않습니다.');");
-			   		out.println("history.back();");
-			   		out.println("</script>");
-			   		out.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				return null;
+				req.setAttribute("msg", "이메일 입력이 잘못 되었습니다. 다시 확인해주세요.");
+				return new ModelAndView("reviewboard/passCheck", false);
 			}
 		}
-		else
-			return null;
+		
+		return null;
 	}
 
 }

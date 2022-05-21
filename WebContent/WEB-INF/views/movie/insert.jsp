@@ -45,12 +45,12 @@ list = (ArrayList<MovieDTO>) request.getAttribute("movieList");
 			<div class="form-group">
 				<label for="writer">장르</label> <input type="text"
 					class="form-control" id="genre" name="genre"
-					placeholder="내용을 입력하세요.">
+					placeholder="장르를 입력하세요.">
 			</div>
 			<div class="form-group">
 				<label for="writer">감독</label> <input type="text"
 					class="form-control" id="director" name="director"
-					placeholder="비밀번호를 입력하세요.">
+					placeholder="감독을 입력하세요.">
 			</div>
 			<div class="form-group">
 				<label for="content">내용</label>

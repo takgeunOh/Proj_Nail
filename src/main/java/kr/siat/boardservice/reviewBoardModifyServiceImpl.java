@@ -59,6 +59,7 @@ public class reviewBoardModifyServiceImpl implements Service {
 	public ModelAndView request(HttpServletRequest req, HttpServletResponse resp) {
 		
 		if("GET".equals(req.getMethod())) {
+			System.out.println("수정 get 방식 진입");
 			doGet(req, resp);
 			
 			return new ModelAndView("reviewboard/modify", false);
@@ -74,10 +75,9 @@ public class reviewBoardModifyServiceImpl implements Service {
 			resp.setContentType("text/html; charset=UTF-8");
 			
 			String modifyNum = req.getParameter("modifyNum");
-			String password = boardDAO.selectbyBoardNum(modifyNum).getBoardPassword();
+			// String password = boardDAO.selectbyBoardNum(modifyNum).getBoardPassword();
 			
-			if(password.equals(req.getParameter("modifyPassword"))) {
-				doPost(req, resp);
+			doPost(req, resp);
 				
 				/*
 				 * resp.setContentType("text/html; charset=utf-8"); PrintWriter out; try { out =
@@ -86,10 +86,10 @@ public class reviewBoardModifyServiceImpl implements Service {
 				 * out.println("</script>"); out.flush(); } catch (IOException e) { // TODO
 				 * Auto-generated catch block e.printStackTrace(); }
 				 */
-				req.setAttribute("msg", "수정이 완료되었습니다.");
+			req.setAttribute("msg", "수정이 완료되었습니다.");
 				
-				return new ModelAndView("reviewboard/passCheck", false);
-			} else {
+			return new ModelAndView("reviewboard/passCheck", false);
+			/*} else {
 				resp.setContentType("text/html; charset=utf-8");
 				PrintWriter out;
 				try {
@@ -104,17 +104,15 @@ public class reviewBoardModifyServiceImpl implements Service {
 					e.printStackTrace();
 				}
 				
-				// req.setAttribute("message", "비밀번호가 틀렸습니다.");
-				/*
-				 * BoardDTO dto = boardDAO.selectbyBoardNum(modifyNum);
-				 * req.setAttribute("boardaftermodify", dto); return new
-				 * ModelAndView("bbs/detail", false);
-				 */
-				return null;
-			}
-		}
-		else
-			return null;
-	}
+				req.setAttribute("message", "비밀번호가 틀렸습니다.");
 
+				BoardDTO dto = boardDAO.selectbyBoardNum(modifyNum);
+				req.setAttribute("boardaftermodify", dto); return new
+				ModelAndView("bbs/detail", false);
+				
+				return null;
+			*/
+		}
+		return null;
+	}
 }

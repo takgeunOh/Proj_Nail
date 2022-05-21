@@ -23,6 +23,7 @@ public class DispatcherServlet extends HttpServlet{
 		int endIndex = reqUri.indexOf(".");
 		
 		String path = reqUri.substring(startIndex, endIndex);
+		System.out.println("디스패처서블릿 path : " + path);
 		String menu = path.substring(0,path.indexOf("/", 1));
 		String function = path.substring(path.indexOf("/",1));
 		
@@ -30,9 +31,9 @@ public class DispatcherServlet extends HttpServlet{
 		System.out.println("DIspatcherServlet function : " + function);					// 정상 출력 (/list)
 		
 		req.setAttribute("service", function);
-		
+
 		Controller controller = handlerMapping.getController(menu);
-		
+		System.out.println("디스패처서블릿 컨트롤러 : " + controller);
 		if(controller!=null) {
 			ModelAndView modelAndView = controller.request(req, resp);
 			// System.out.println(modelAndView.getViewName());							// 정상 출력 /bbs/list

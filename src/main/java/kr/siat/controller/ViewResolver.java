@@ -30,6 +30,7 @@ public class ViewResolver {
 		else {
 			prefix = "/WEB-INF/views/";
 			suffix = ".jsp";
+			System.out.println("뷰리졸버 경로 : " + prefix + viewName + suffix);
 			RequestDispatcher view = req.getRequestDispatcher(prefix + viewName + suffix);
 			try {
 				view.forward(req, resp);
